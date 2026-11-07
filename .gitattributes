@@ -1,0 +1,2 @@
+NotPetya.zip filter=lfs diff=lfs merge=lfs -text
+cape-PetyaRAW.tar.gz filter=lfs diff=lfs merge=lfs -text

